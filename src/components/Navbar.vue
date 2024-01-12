@@ -20,31 +20,26 @@
 
 <style scoped>
 .back_ground {
-	height: 840px;
-	background-size: cover; 
-	background-repeat: no-repeat; 
-    margin: 0;
+	padding: 10px;
+	background-color: black;
 }
 .menu {
-    
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    color: white;
-    background-color: black;
-    border: 2px solid white;
-    border-radius: 20px;
-    background-image: url('../assets/battle.jpg');
-    background-position: 50% 65%;
+	color: white;
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 20px;
+	background-image: url('../assets/battle.jpg');
+	background-position: 50% 65%;
 }
 .menu_bar {
 	list-style-type: none;
 	display: flex;
 	justify-content: center;
-	
 }
 .menu_bar_list {
-    
 	list-style-type: none;
 	display: flex;
 	justify-content: center;
@@ -52,18 +47,18 @@
 }
 .menu_bar_list_element {
 	margin-inline: 35px;
-    border: 1px solid white;
+	border: 1px solid white;
 	border-radius: 10px;
 	padding: 5px;
 	font-size: 20px;
-	transition: 0.3s ;
+	transition: 0.3s;
 }
 .menu_bar_list_element:hover {
 	cursor: pointer;
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); 
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 .menu_bar_title {
-    	margin: 30px 0;
+	margin: 30px 0;
 	font-size: 30px;
 	width: 130px;
 }

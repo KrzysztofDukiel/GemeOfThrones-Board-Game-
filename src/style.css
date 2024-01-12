@@ -80,3 +80,6 @@ button:focus-visible {
 .container {
  margin-inline: 200px;
 }
+body {
+  margin: 0;
+}
