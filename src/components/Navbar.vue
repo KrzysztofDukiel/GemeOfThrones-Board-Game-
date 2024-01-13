@@ -1,17 +1,17 @@
 <script setup></script>
 
 <template>
-	<div class="back_ground">
+	<div class="background">
 		<div class="container menu">
 			<div class="menu_bar">
 				<h2 class="menu_bar_title">Game of throns</h2>
 				<p>extended edidtion</p>
 				<ul class="menu_bar_list">
-					<li class="menu_bar_list_element">Home</li>
-					<li class="menu_bar_list_element">Host Game</li>
-					<li class="menu_bar_list_element">Ruls</li>
-					<li class="menu_bar_list_element">Register</li>
-					<li class="menu_bar_list_element">Login</li>
+					<li>Home</li>
+					<li>Host Game</li>
+					<li>Ruls</li>
+					<li>Register</li>
+					<li>Login</li>
 				</ul>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 </template>
 
 <style scoped>
-.back_ground {
+.background {
 	padding: 10px;
 	background-color: black;
 }
@@ -45,7 +45,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.menu_bar_list_element {
+.menu_bar_list li {
 	margin-inline: 35px;
 	border: 1px solid white;
 	border-radius: 10px;
@@ -53,7 +53,7 @@
 	font-size: 20px;
 	transition: 0.3s;
 }
-.menu_bar_list_element:hover {
+.menu_bar_list li:hover {
 	cursor: pointer;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
