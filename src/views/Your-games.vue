@@ -1,12 +1,10 @@
 <script setup>
 
-import Main from "../components/Main-page.vue"
-
 </script>
 
 <template>
 	
-	<Main/>
+
 </template>
 
 <style scoped></style>

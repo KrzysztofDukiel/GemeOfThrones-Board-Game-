@@ -7,9 +7,9 @@
 				<h2 class="menu_bar_title">Game of throns</h2>
 				<p>extended edidtion</p>
 				<ul class="menu_bar_list">
-					<li>Home</li>
-					<li>Host Game</li>
-					<li>Ruls</li>
+					<li><router-link to="/" class="test">Home</router-link></li>
+					<li><router-link to="/games" class="test">Games</router-link></li>
+					<li><router-link to="/your-games" class="test">Your games</router-link></li>
 					<li>Register</li>
 					<li>Login</li>
 				</ul>
@@ -52,7 +52,9 @@
 	padding: 5px;
 	font-size: 20px;
 	transition: 0.3s;
+	
 }
+
 .menu_bar_list li:hover {
 	cursor: pointer;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
@@ -61,5 +63,10 @@
 	margin: 30px 0;
 	font-size: 30px;
 	width: 130px;
+}
+.test {
+	text-decoration: none;
+	color: white;
+
 }
 </style>

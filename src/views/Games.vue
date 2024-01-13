@@ -1,12 +1,11 @@
 <script setup>
 
-import Main from "../components/Main-page.vue"
+import Host from "../components/Host-join.vue"
 
 </script>
 
 <template>
-	
-	<Main/>
+	<Host/>
 </template>
 
 <style scoped></style>

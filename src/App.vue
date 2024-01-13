@@ -6,7 +6,8 @@ import Main from "./components/Main-page.vue"
 
 <template>
 	<Navbar/>
-	<Main/>
+	<router-view></router-view>
+	
 </template>
 
 <style scoped></style>
