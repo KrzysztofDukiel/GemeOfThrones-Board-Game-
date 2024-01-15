@@ -2,12 +2,13 @@
 ## Projekt gry planszowej dla 9 graczy 
 
 # Rzeczy do zrobienia
-Main page zmienic na host page 
-dodac metode do wyswietlania list gier pobieranej z backendu
-dodac łączenia do inputow host game i łączenie z backendem 
+
+dodac metode do wyswietlania list gier pobieranej z backendu sredni
+dodac łączenia do inputow host game i łączenie z backendem Wysoki
 Footer 
 Nastepnie stworzyc Home page 
+Show map średni 
 
-Rules 
-Register 
-Login 
+Rules Niski
+Register wysoki
+Login wysoki

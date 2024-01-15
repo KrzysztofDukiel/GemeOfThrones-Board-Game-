@@ -9,9 +9,15 @@
 				<ul class="menu_bar_list">
 					<li><router-link to="/" class="test">Home</router-link></li>
 					<li><router-link to="/games" class="test">Games</router-link></li>
-					<li><router-link to="/your-games" class="test">Your games</router-link></li>
-					<li>Register</li>
-					<li>Login</li>
+					<li>
+						<router-link to="/your-games" class="test">Your games</router-link>
+					</li>
+					<li>
+						<router-link to="/register" class="test">Register</router-link>
+					</li>
+					<li>
+						<router-link to="/login" class="test">Login</router-link>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -52,7 +58,6 @@
 	padding: 5px;
 	font-size: 20px;
 	transition: 0.3s;
-	
 }
 
 .menu_bar_list li:hover {
@@ -67,6 +72,5 @@
 .test {
 	text-decoration: none;
 	color: white;
-
 }
 </style>

@@ -18,7 +18,18 @@ const routes = [
     path: "/your-games",
     name: 'Your-Games',
     component: YourGames
-  }
+  },
+  {
+    path: "/register",
+    name: 'Register',
+    component: YourGames
+  },
+  {
+    path: "/login",
+    name: 'Login',
+    component: YourGames
+  },
+  
  
 ]
 
