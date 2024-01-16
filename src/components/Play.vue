@@ -1,7 +1,35 @@
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      mouseX: 0,
+      mouseY: 0,
+      imageSource: 'sciezka/do/zdjecia.jpg',
+      imageX: 1000, // Dostosuj kordynaty X
+      imageY: 1000, // Dostosuj kordynaty Y
+      imageSize: 2000, // Dostosuj wielkość zdjęcia
+    };
+  },
+  mounted() {
+    document.addEventListener('mousemove', this.handleMouseMove);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mousemove', this.handleMouseMove);
+  },
+  methods: {
+    handleMouseMove(event) {
+      this.mouseX = event.clientX;
+      this.mouseY = event.clientY;
+      console.log(this.mouseX, this.mouseY)
+    },
+  },
+};
+</script>
 
 <template>
-	<div class="map"></div>
+<div class="play">
+    <h1>Good luck have fun</h1>
+    <div class="map"><img src="../assets/9PlayersMap.jpg"  alt="" class="map_img" :style="{ left: imageX + 'px', top: imageY + 'px', width: imageSize + 'px' }"></div>
 	<div class="game">
 		<div class="houses"><h2>Chose your house</h2>
         <ul>
@@ -23,9 +51,55 @@
             <li>ship</li>
         </ul>
         </div>
-		<div class="tokens"></div>
+		<div class="tokens">
+            <h2>Orders</h2>
+            <div class="attack">
+            <div>Attack -1</div>
+            <div>Attack +0</div>
+            <div>Attack +1</div>
+        </div>
+        <div class="s">
+            <div>support</div>
+            <div>support</div>
+            <div>support +1</div>
+        </div>
+        <div class="s">
+            <div>raid</div>
+            <div>raid</div>
+            <div>raid Star</div>
+        </div>
+        <div class="s">
+            <div>defend +1</div>
+            <div>defend +1</div>
+            <div>defend +2</div>
+        </div>
+        <div class="s">
+            <div>Powertoken</div>
+            <div>Powertoken</div>
+            <div>Powertoken Star</div>
+        </div>
+        </div>
 		<div class="house_cards"></div>
+        <div>
+    <p>Mouse Coordinates</p>
+    <p>X: {{ mouseX }}</p>
+    <p>Y: {{ mouseY }}</p>
+  </div>
 	</div>
+</div>
 </template>
 
-<style scoped></style>
+<style >
+
+.map {
+    max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+.map_img {
+    /* width: auto;
+  max-width: 100%;
+  max-height: 100%;*/
+  transform: scale(1); 
+}
+</style>
