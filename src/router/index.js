@@ -3,6 +3,8 @@ import Home from "../views/Home.vue"
 import Games from "../views/Games.vue"
 import YourGames from "../views/Your-games.vue"
 import Play from "../views/Play.vue"
+import Login from "../views/Login.vue"
+import Register from "../views/Register.vue"
 const routes = [
   {
     path: '/',
@@ -23,12 +25,12 @@ const routes = [
   {
     path: "/register",
     name: 'Register',
-    component: YourGames
+    component: Register
   },
   {
     path: "/login",
     name: 'Login',
-    component: YourGames
+    component: Login
   },
   
   {
