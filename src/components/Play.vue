@@ -26,10 +26,13 @@ export default {
 	
 	methods: {
 
-		changeHouse(house, elemnt) {
+		changeHouse(house) {
 			this.house = house;
-			this.chosenElemnt = elemnt
+			console.log("kolor baratheona")
 		},
+    chooseElement(element) {
+      this.chosenElemnt = element
+    },
 
 		calculateDistance(event) {
 			const boundingRect = event.target.getBoundingClientRect();
@@ -48,10 +51,14 @@ export default {
         console.log("if sytuacja")
         return "no element chosen"
       }
-   
-      this.elemntsArray.push({class: this.chosenElemnt, house: this.house, position: `top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`})
+      console.log("test")
+      this.elemntsArray.push({class: this.chosenElemnt+ " "+ this.house, position: `top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`})
       
 		},
+    changePosition(index) {
+      this.elemntsArray.slice(index, 1)
+      console.log('działa?', index) 
+    }
    
 	},
 };
@@ -72,8 +79,8 @@ export default {
 				}" />
 			<div
 				style="position: absolute; top: {{ clickedCoordinates.y }}px; left: {{ clickedCoordinates.x }}px; background-color: red; width: 10px; height: 10px;"></div>
-			<div v-for="elemnt in elemntsArray">
-      <div v-bind:class="elemnt.class" :style=" elemnt.position" ></div>
+			<div v-for="(elemnt, index) in elemntsArray">
+      <div v-bind:class="elemnt.class" :style=" elemnt.position" @click="changePosition(index)" >{{ index }}</div>
       </div>
 		</div>
 		<div>
@@ -83,54 +90,54 @@ export default {
 		<div class="game">
 			<div class="houses">
 				<h2>Chose your house</h2>
-				<ul>
+				<ul class="houses_list">
 					<!-- dostosowac do mapy roboczo robimy na sztywno -->
-					<li>Baratheon</li>
-					<li>Lannister</li>
-					<li>Grejoy</li>
-					<li>Tully</li>
-					<li>Arryn</li>
-					<li>Targ</li>
-					<li>Stark</li>
-					<li>Tyller</li>
-					<li>Martell</li>
+					<li @click="changeHouse('Baratheon')">Baratheon</li>
+					<li @click="changeHouse('Lannister')">Lannister</li>
+					<li @click="changeHouse('Grejoy')">Grejoy</li>
+					<li @click="changeHouse('Tully')">Tully</li>
+					<li @click="changeHouse('Arryn')">Arryn</li>
+					<li @click="changeHouse('Targ')">Targ</li>
+					<li @click="changeHouse('Stark')">Stark</li>
+					<li @click="changeHouse('Tyller')">Tyller</li>
+					<li @click="changeHouse('Martell')">Martell</li>
 				</ul>
 			</div>
 			<div class="units">
 				<h2>Chose units</h2>
 				<ul>
-					<li>footman</li>
-					<li>knight</li>
-					<li>Tower</li>
-					<li>ship</li>
+					<li @click="chooseElement('footman')">footman</li>
+					<li @click="chooseElement('knight')">knight</li>
+					<li @click="chooseElement('tower')">Tower</li>
+					<li @click="chooseElement('ship')">ship</li>
 				</ul>
 			</div>
 			<div class="tokens">
 				<h2>Orders</h2>
-				<div class="attack">
-					<div>Attack -1</div>
-					<div>Attack +0</div>
-					<div>Attack +1</div>
+				<div class="attacks">
+					<div @click="chooseElement('attack')">Attack -1</div>
+					<div @click="chooseElement('attack')">Attack +0</div>
+					<div @click="chooseElement('attack')">Attack +1</div>
 				</div>
-				<div class="s">
-					<div>support</div>
-					<div>support</div>
-					<div>support +1</div>
+				<div class="supports">
+					<div @click="chooseElement('support')">support</div>
+					<div @click="chooseElement('support')">support</div>
+					<div @click="chooseElement('support')">support +1</div>
 				</div>
-				<div class="s">
-					<div>raid</div>
-					<div>raid</div>
-					<div>raid Star</div>
+				<div class="raids">
+					<div @click="chooseElement('raid')">raid</div>
+					<div @click="chooseElement('raid')">raid</div>
+					<div @click="chooseElement('raid')">raid Star</div>
 				</div>
-				<div class="s">
-					<div>defend +1</div>
-					<div>defend +1</div>
-					<div>defend +2</div>
+				<div class="defends">
+					<div @click="chooseElement('defend')">defend +1</div>
+					<div @click="chooseElement('defend')">defend +1</div>
+					<div @click="chooseElement('defend')">defend +2</div>
 				</div>
-				<div class="s">
-					<div>Powertoken</div>
-					<div>Powertoken</div>
-					<div>Powertoken Star</div>
+				<div class="Powertokens">
+					<div @click="chooseElement('Powertoken')">Powertoken</div>
+					<div @click="chooseElement('Powertoken')">Powertoken</div>
+					<div @click="chooseElement('Powertoken')">Powertoken Star</div>
 				</div>
 			</div>
 			<div class="house_cards"></div>
@@ -143,11 +150,28 @@ export default {
 
 .footman {
 	position: absolute;
-	background-color: black;
+
 	width: 20px;
-	height: 20px;
+	height: 30px;
 	/* top: 1900px;
 	left: 893px; */
+}
+.knight {
+  position: absolute;
+  width: 30px;
+	height: 20px;
+}
+.tower {
+  position: absolute;
+  width: 30px;
+	height: 20px;
+
+}
+.ship {
+  position: absolute;
+  rotate: -30deg;
+  width: 20px;
+	height: 30px;
 }
 
 .Baratheon {
@@ -194,6 +218,14 @@ background-color: black;
   max-height: 100%;
 	transform: scale(1);
 }
-
-
+.units {
+  cursor: pointer;
+}
+.houses_list {
+  cursor: pointer;
+}
+.houses_list li {
+  border: 2px solid black;
+  widows: 200px;
+}
 </style>
