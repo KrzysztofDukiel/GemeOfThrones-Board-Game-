@@ -1,6 +1,4 @@
 <script>
-
-
 // import draggable from 'vuedraggable';
 export default {
 	// components: {
@@ -11,28 +9,28 @@ export default {
 			imageX: 1000, // Dostosuj kordynaty X
 			imageY: 1000, // Dostosuj kordynaty Y
 			imageSize: 2000, // Dostosuj wielkość zdjęcia,
-      // kolor frakcji rodzje figurki lista elemntow na planszy
-			house: 'Grajoy',
-      chosenElemnt: "footman",
-			elemntsArray: [],
-      //
+			// kolor frakcji rodzje figurki lista elemntow na planszy
+			house: '',
+			chosenElement: '',
+			elementsArray: [],
+			//
 			mapWidth: 2000,
 			mapHeight: 2257,
 			clickedCoordinates: { x: 0, y: 0 },
 			distanceFromEdges: { top: 0, right: 0, bottom: 0, left: 0 },
-
 		};
 	},
-	
-	methods: {
 
+	methods: {
 		changeHouse(house) {
 			this.house = house;
-			console.log("kolor baratheona")
+			console.log(this.house);
 		},
-    chooseElement(element) {
-      this.chosenElemnt = element
-    },
+		chosenElementFunc(element) {
+			
+			this.chosenElement = element;
+			console.log(this.chosenElement)
+		},
 
 		calculateDistance(event) {
 			const boundingRect = event.target.getBoundingClientRect();
@@ -41,25 +39,19 @@ export default {
 
 			this.clickedCoordinates = { x: offsetX, y: offsetY };
 
-			this.distanceFromEdges = {
-				top: offsetY,
-				right: this.mapWidth - offsetX,
-				bottom: this.mapHeight - offsetY,
-				left: offsetX,
-			};
-      if(this.chosenELemnt === "" || this.house === "") {
-        console.log("if sytuacja")
-        return "no element chosen"
-      }
-      console.log("test")
-      this.elemntsArray.push({class: this.chosenElemnt+ " "+ this.house, position: `top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`})
-      
+			if (this.chosenElement === '' || this.house === '') {
+				console.log('if sytuacja');
+				return 'no element chosen';
+			}
+			this.elementsArray.push({
+				class: this.chosenElement + ' ' + this.house,
+				position: `top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
+			});
 		},
-    changePosition(index) {
-      this.elemntsArray.slice(index, 1)
-      console.log('działa?', index) 
-    }
-   
+		changePosition(index) {
+			this.elementsArray.slice(index, 1);
+			console.log('działa?', index);
+		},
 	},
 };
 </script>
@@ -79,13 +71,17 @@ export default {
 				}" />
 			<div
 				style="position: absolute; top: {{ clickedCoordinates.y }}px; left: {{ clickedCoordinates.x }}px; background-color: red; width: 10px; height: 10px;"></div>
-			<div v-for="(elemnt, index) in elemntsArray">
-      <div v-bind:class="elemnt.class" :style=" elemnt.position" @click="changePosition(index)" >{{ index }}</div>
-      </div>
+			<div v-for="(element, index) in elementsArray">
+				<div
+					v-bind:class="element.class"
+					:style="element.position"
+					@click="changePosition(index)">
+					{{ index }}
+				</div>
+			</div>
 		</div>
 		<div>
 			<p>Koordynaty po kliknięciu: {{ clickedCoordinates }}</p>
-			
 		</div>
 		<div class="game">
 			<div class="houses">
@@ -106,38 +102,38 @@ export default {
 			<div class="units">
 				<h2>Chose units</h2>
 				<ul>
-					<li @click="chooseElement('footman')">footman</li>
-					<li @click="chooseElement('knight')">knight</li>
-					<li @click="chooseElement('tower')">Tower</li>
-					<li @click="chooseElement('ship')">ship</li>
+					<li @click="chosenElementFunc('footman')">footman</li>
+					<li @click="chosenElementFunc('knight')">knight</li>
+					<li @click="chosenElementFunc('tower')">Tower</li>
+					<li @click="chosenElementFunc('ship')">ship</li>
 				</ul>
 			</div>
 			<div class="tokens">
 				<h2>Orders</h2>
 				<div class="attacks">
-					<div @click="chooseElement('attack')">Attack -1</div>
-					<div @click="chooseElement('attack')">Attack +0</div>
-					<div @click="chooseElement('attack')">Attack +1</div>
+					<div @click="chosenElementFunc('attack')">Attack -1</div>
+					<div @click="chosenElementFunc('attack')">Attack +0</div>
+					<div @click="chosenElementFunc('attack')">Attack +1</div>
 				</div>
 				<div class="supports">
-					<div @click="chooseElement('support')">support</div>
-					<div @click="chooseElement('support')">support</div>
-					<div @click="chooseElement('support')">support +1</div>
+					<div @click="chosenElementFunc('support')">support</div>
+					<div @click="chosenElementFunc('support')">support</div>
+					<div @click="chosenElementFunc('support')">support +1</div>
 				</div>
 				<div class="raids">
-					<div @click="chooseElement('raid')">raid</div>
-					<div @click="chooseElement('raid')">raid</div>
-					<div @click="chooseElement('raid')">raid Star</div>
+					<div @click="chosenElementFunc('raid')">raid</div>
+					<div @click="chosenElementFunc('raid')">raid</div>
+					<div @click="chosenElementFunc('raid')">raid Star</div>
 				</div>
 				<div class="defends">
-					<div @click="chooseElement('defend')">defend +1</div>
-					<div @click="chooseElement('defend')">defend +1</div>
-					<div @click="chooseElement('defend')">defend +2</div>
+					<div @click="chosenElementFunc('defend')">defend +1</div>
+					<div @click="chosenElementFunc('defend')">defend +1</div>
+					<div @click="chosenElementFunc('defend')">defend +2</div>
 				</div>
 				<div class="Powertokens">
-					<div @click="chooseElement('Powertoken')">Powertoken</div>
-					<div @click="chooseElement('Powertoken')">Powertoken</div>
-					<div @click="chooseElement('Powertoken')">Powertoken Star</div>
+					<div @click="chosenElementFunc('Powertoken')">Powertoken</div>
+					<div @click="chosenElementFunc('Powertoken')">Powertoken</div>
+					<div @click="chosenElementFunc('Powertoken')">Powertoken Star</div>
 				</div>
 			</div>
 			<div class="house_cards"></div>
@@ -157,51 +153,49 @@ export default {
 	left: 893px; */
 }
 .knight {
-  position: absolute;
-  width: 30px;
+	position: absolute;
+	width: 30px;
 	height: 20px;
 }
 .tower {
-  position: absolute;
-  width: 30px;
+	position: absolute;
+	width: 30px;
 	height: 20px;
-
 }
 .ship {
-  position: absolute;
-  rotate: -30deg;
-  width: 20px;
+	position: absolute;
+	rotate: -30deg;
+	width: 20px;
 	height: 30px;
 }
 
 .Baratheon {
-background-color: yellow;
+	background-color: yellow;
 }
 .Lannister {
-background-color: red;
+	background-color: red;
 }
 .Tully {
-background-color: rgb(27, 25, 170);
+	background-color: rgb(27, 25, 170);
 }
 .Arryn {
-background-color:  lightblue;
+	background-color: lightblue;
 }
 .Targ {
-background-color: violet;
+	background-color: violet;
 }
 .Stark {
-background-color: white;
+	background-color: white;
 }
 .Tyller {
-background-color: rgb(40, 196, 40);
+	background-color: rgb(40, 196, 40);
 }
 .Martell {
-background-color: orange;
+	background-color: orange;
 }
 .Grajoy {
-background-color: black;
+	background-color: black;
 }
-
 
 .map {
 	position: relative;
@@ -214,18 +208,18 @@ background-color: black;
 }
 .map_img {
 	width: auto;
-  max-width: 100%;
-  max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 	transform: scale(1);
 }
 .units {
-  cursor: pointer;
+	cursor: pointer;
 }
 .houses_list {
-  cursor: pointer;
+	cursor: pointer;
 }
 .houses_list li {
-  border: 2px solid black;
-  widows: 200px;
+	border: 2px solid black;
+	widows: 200px;
 }
 </style>
