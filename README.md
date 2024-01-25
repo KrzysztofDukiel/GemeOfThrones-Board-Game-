@@ -10,5 +10,6 @@ Nastepnie stworzyc Home page
 Show map średni 
 
 Rules Niski
-Register wysoki
-Login wysoki
+
+Dodac przez socket.io backend zdjecia tokenow i jednostek
+dowiedziec sie jak backednowo wysyła sie zdjecia
