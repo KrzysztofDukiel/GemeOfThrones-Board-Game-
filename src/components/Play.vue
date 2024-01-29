@@ -58,7 +58,11 @@ export default {
 			//  + 'background-imge:' + '../assets/'+this.type+'/' +this.chosenElement +'.webp;'
 		},
 		changePosition(index) {
-			this.house = this.elementsArray[index].house
+
+			if (this.house !== this.elementsArray[index].house) {
+				return "wrong House"
+			}
+			
 			this.type = this.elementsArray[index].type
 			this.chosenElement = this.elementsArray[index].chosenElement
 
