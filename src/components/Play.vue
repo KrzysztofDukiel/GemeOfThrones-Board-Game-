@@ -227,7 +227,7 @@ export default {
 	widows: 200px;
 }
 .orders {
-	/* background-image: url('../assets/orders/at+0.webp'); */
+	background-image: url("../assets/orders/at+0.webp");
 	background-color: white;
 	/* position: absolute; 		 */
 	width: 80px;
