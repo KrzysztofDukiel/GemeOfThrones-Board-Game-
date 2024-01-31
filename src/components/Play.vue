@@ -14,23 +14,34 @@ export default {
 			chosenElement: '',
 			elementsArray: [],
 			//
-			type: "",
+			type: '',
 			mapWidth: 2000,
 			mapHeight: 2257,
 			clickedCoordinates: { x: 0, y: 0 },
 			distanceFromEdges: { top: 0, right: 0, bottom: 0, left: 0 },
+			preventClick: false,
 		};
 	},
 
 	methods: {
 		changeHouse(house) {
 			this.house = house;
+
 			console.log(this.house);
 		},
 		chosenElementFunc(element, type) {
-			this.type = type
+			if (this.house === '') {
+				return 'choose house first';
+			}
+
+			this.type = type;
+			if (type === 'units') {
+				this.chosenElement = this.house + element;
+				console.log(this.chosenElement);
+				return 'done';
+			}
 			this.chosenElement = element;
-			console.log(this.chosenElement)
+			console.log(this.chosenElement);
 		},
 
 		calculateDistance(event) {
@@ -40,45 +51,44 @@ export default {
 
 			this.clickedCoordinates = { x: offsetX, y: offsetY };
 
-			if (this.chosenElement === '' || this.house === '') {
-				
+			if (this.chosenElement === '' || this.house === '' || this.preventClick) {
+				console.log(this.preventClick);
+				this.preventClick = false;
 				return 'no element chosen';
 			}
-			this.clickedCoordinates.y -= 30
-			this.clickedCoordinates.x -= 30
-			console.log(this.type, this.chosenElement)
+			this.clickedCoordinates.y -= 30;
+			this.clickedCoordinates.x -= 30;
+			console.log(this.type, this.chosenElement);
 			this.elementsArray.push({
-				class: this.type,
+				class: this.type + ' ' + this.chosenElement + ' ' + this.house,
 				position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
 				type: this.type,
 				chosenElement: this.chosenElement,
 				house: this.house,
 			});
-			console.log(this.elementsArray)
-			//  + 'background-imge:' + '../assets/'+this.type+'/' +this.chosenElement +'.webp;'
+			console.log(this.elementsArray);
+			//  + 'background-imge:' + '../assets/'+this.type+'/' +this.chosenElement +'.webp;
+			this.type = '';
+			this.clickedCoordinates.y = null;
+			this.clickedCoordinates.x = null;
+			this.type = '';
+			this.chosenElement = '';
 		},
 		changePosition(index) {
-
+			this.preventClick = true;
 			if (this.house !== this.elementsArray[index].house) {
-				return "wrong House"
+				return 'wrong House';
 			}
-			
-			this.type = this.elementsArray[index].type
-			this.chosenElement = this.elementsArray[index].chosenElement
+			console.log(this.elementsArray[index].house);
+			this.type = this.elementsArray[index].type;
+			this.chosenElement = this.elementsArray[index].chosenElement;
 
 			this.elementsArray.splice(index, 1);
 
-			console.log('działa?', index);
+			console.log('działa?', index, this.elementsArray);
 		},
-		flipOrders() {
-
-		},
-		getImg(type, chosenElement){
-			console.log('../assets/'+type+'/' +chosenElement +'.webp')
-			return '../assets/'+type+'/' +chosenElement +'.webp';
-		}
+		flipOrders() {},
 	},
-
 };
 </script>
 
@@ -97,15 +107,11 @@ export default {
 				}" />
 			<div
 				style="position: absolute; top: {{ clickedCoordinates.y }}px; left: {{ clickedCoordinates.x }}px; background-color: red; width: 10px; height: 10px;"></div>
-			<div v-for="(element, index) in elementsArray"  :key="element.position" >
+			<div v-for="(element, index) in elementsArray" :key="element.position">
 				<div
 					v-bind:class="element.class"
 					:style="element.position"
-					@click="changePosition(index)"
-					
-					>
-					<img :src="getImg(element.type, element.chosenElement)" :alt="element.chosenElement">
-				</div>
+					@click="changePosition(index)"></div>
 			</div>
 		</div>
 		<div>
@@ -127,83 +133,52 @@ export default {
 					<li @click="changeHouse('Martell')">Martell</li>
 				</ul>
 			</div>
-			<div class="units">
+			<div>
 				<h2>Chose units</h2>
 				<ul>
-					<li @click="chosenElementFunc('footman', 'units')">footman</li>
-					<li @click="chosenElementFunc('knight', 'units')">knight</li>
-					<li @click="chosenElementFunc('tower', 'units')">Tower</li>
-					<li @click="chosenElementFunc('ship', 'units')">ship</li>
+					<li @click="chosenElementFunc('p', 'units')">footman</li>
+					<li @click="chosenElementFunc('k', 'units')">knight</li>
+					<li @click="chosenElementFunc('w', 'units')">Tower</li>
+					<li @click="chosenElementFunc('s', 'units')">ship</li>
 				</ul>
 			</div>
+			<h2>Orders</h2>
 			<div class="tokens">
-				<h2>Orders</h2>
 				<div class="attacks">
-					<div @click="chosenElementFunc('at-1', 'orders')">Attack -1</div>
-					<div @click="chosenElementFunc('at+0', 'orders')">Attack +0</div>
-					<div @click="chosenElementFunc('at+1', 'orders')">Attack +1</div>
+					<div @click="chosenElementFunc('at-1', 'orders')"> <img src="../assets/orders/at-1.webp" alt=""></div>
+					<div @click="chosenElementFunc('at0', 'orders')"><img src="../assets/orders/at0.webp" alt=""></div>
+					<div @click="chosenElementFunc('at1', 'orders')"><img src="../assets/orders/at1.webp" alt=""></div>
 				</div>
 				<div class="supports">
-					<div @click="chosenElementFunc('def+1', 'orders')">defend +1</div>
-					<div @click="chosenElementFunc('def+1', 'orders')">defend +1</div>
-					<div @click="chosenElementFunc('def+2', 'orders')">defend +2</div>
+					<div @click="chosenElementFunc('def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
+					<div @click="chosenElementFunc('def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
+					<div @click="chosenElementFunc('def2', 'orders')"><img src="../assets/orders/def2.jpg" alt=""></div>
 				</div>
 				<div class="raids">
-					<div @click="chosenElementFunc('raid', 'orders')">raid</div>
-					<div @click="chosenElementFunc('raid', 'orders')">raid</div>
-					<div @click="chosenElementFunc('raid+', 'orders')">raid Star</div>
+					<div @click="chosenElementFunc('raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
+					<div @click="chosenElementFunc('raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
+					<div @click="chosenElementFunc('raidSt', 'orders')"><img src="../assets/orders/raidSt.webp" alt=""></div>
 				</div>
 				<div class="defends">
-					<div @click="chosenElementFunc('sup', 'orders')">support</div>
-					<div @click="chosenElementFunc('sup', 'orders')">support</div>
-					<div @click="chosenElementFunc('sup+1', 'orders')">support +1</div>
+					<div @click="chosenElementFunc('sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
+					<div @click="chosenElementFunc('sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
+					<div @click="chosenElementFunc('sup1', 'orders')"><img src="../assets/orders/sup1.webp" alt=""></div>
 				</div>
 				<div class="Powertokens">
-					<div @click="chosenElementFunc('pow', 'orders')">Powertoken</div>
-					<div @click="chosenElementFunc('pow', 'orders')">Powertoken</div>
-					<div @click="chosenElementFunc('pow+', 'orders')">Powertoken Star</div>
+					<div @click="chosenElementFunc('pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
+					<div @click="chosenElementFunc('pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
+					<div @click="chosenElementFunc('powSt', 'orders')">
+						<img src="../assets/orders/powSt.webp" alt="">
+					</div>
 				</div>
 			</div>
 			<div class="house_cards"></div>
 		</div>
 	</div>
-<div class="test"></div>
+	<div class="test"></div>
 </template>
 
 <style>
-/* 2100px 2400h */
-/* .element {
-
-} */
-.test {
-	background-image: url(`../assets/orders/at+0.webp`);
-	width: 80px;
-	height: 80px;
-}
-.footman {
-	position: absolute;
-
-	width: 20px;
-	height: 30px;
-	/* top: 1900px;
-	left: 893px; */
-}
-.knight {
-	position: absolute;
-	width: 30px;
-	height: 20px;
-}
-.tower {
-	position: absolute;
-	width: 30px;
-	height: 20px;
-}
-.ship {
-	position: absolute;
-	rotate: -30deg;
-	width: 20px;
-	height: 30px;
-}
 
 .map {
 	position: relative;
@@ -216,9 +191,7 @@ export default {
 	max-height: 100%;
 	transform: scale(1);
 }
-.units {
-	cursor: pointer;
-}
+
 .houses_list {
 	cursor: pointer;
 }
@@ -227,23 +200,37 @@ export default {
 	widows: 200px;
 }
 .orders {
-	background-image: url("../assets/orders/at+0.webp");
-	background-color: white;
-	/* position: absolute; 		 */
-	width: 80px;
-	height: 80px;
+	width: 45px;
+	height: 45px;
 	background-position: center;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-size: cover;
 	border-radius: 50%;
 	transition: 0.3s;
 }
-.orders:hover, .units:hover {
+.units {
+	width: 45px;
+	height: 45px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: 0.3s;
+}
+.orders:hover,
+.units:hover {
 	cursor: pointer;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
-
+.tokens {
+	display: flex;
+}
+.tokens img {
+	width: 60px;
+  height: 60px;
+  object-fit: contain;
+  cursor: pointer;
+}
 </style>
-
 
 <!-- .Baratheon {
 	background-color: yellow;
