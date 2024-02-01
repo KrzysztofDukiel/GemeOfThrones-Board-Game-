@@ -152,6 +152,35 @@
   background-image: url(./assets//units/Tw.png);
 }
 
+.BaratheonR {
+ background-image: url("./assets/orders/revers/Break.png");
+}
+.LannisterR {
+  background-image: url("./assets/orders/revers/Lan.png");
+
+}
+.TullyR {
+  background-image: url("./assets/orders/revers/Tlly.png");
+
+}
+.ArrynR {
+  background-image: url("./assets/orders/revers/arrange.png");
+}
+.TargR {
+  background-image: url("./assets/orders/revers/Break.png");
+}
+.StarkR {
+  background-image: url("./assets/orders/revers/Start.png");
+}
+.TyllerR {
+  background-image: url("./assets/orders/revers/turlaj.png");
+}
+.MartellR {
+  background-image: url("./assets/orders/revers/diuna.png");
+}
+.GrejoyR {
+  background-image: url("./assets/orders/revers/Greek.png");
+}
 
 
 

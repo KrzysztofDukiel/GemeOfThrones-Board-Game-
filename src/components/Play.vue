@@ -20,6 +20,7 @@ export default {
 			clickedCoordinates: { x: 0, y: 0 },
 			distanceFromEdges: { top: 0, right: 0, bottom: 0, left: 0 },
 			preventClick: false,
+			revers: true
 		};
 	},
 
@@ -33,13 +34,7 @@ export default {
 			if (this.house === '') {
 				return 'choose house first';
 			}
-
 			this.type = type;
-			if (type === 'units') {
-				this.chosenElement = this.house + element;
-				console.log(this.chosenElement);
-				return 'done';
-			}
 			this.chosenElement = element;
 			console.log(this.chosenElement);
 		},
@@ -60,14 +55,14 @@ export default {
 			this.clickedCoordinates.x -= 30;
 			console.log(this.type, this.chosenElement);
 			this.elementsArray.push({
-				class: this.type + ' ' + this.chosenElement + ' ' + this.house,
+				class: this.type + ' ' + this.house  + this.chosenElement,
 				position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
 				type: this.type,
 				chosenElement: this.chosenElement,
 				house: this.house,
+				revers: this.revers
 			});
 			console.log(this.elementsArray);
-			//  + 'background-imge:' + '../assets/'+this.type+'/' +this.chosenElement +'.webp;
 			this.type = '';
 			this.clickedCoordinates.y = null;
 			this.clickedCoordinates.x = null;
@@ -87,7 +82,22 @@ export default {
 
 			console.log('działa?', index, this.elementsArray);
 		},
-		flipOrders() {},
+		flipOrders() {
+			
+			console.log("działa?")
+			this.elementsArray.filter((elements)=> {
+				console.log(elements.type, elements.house, this.house, elements.revers)
+				if(elements.house === this.house && "orders" === elements.type) {
+					elements.revers = !elements.revers
+					if(!elements.revers) {
+						elements.class =  elements.class + this.house  + "R"
+						console.log("działa?", elements.revers )
+					} else {
+						elements.class.replace(this.house  + "R", "")
+					}
+				}
+			})
+		},
 	},
 };
 </script>
@@ -145,37 +155,38 @@ export default {
 			<h2>Orders</h2>
 			<div class="tokens">
 				<div class="attacks">
-					<div @click="chosenElementFunc('at-1', 'orders')"> <img src="../assets/orders/at-1.webp" alt=""></div>
-					<div @click="chosenElementFunc('at0', 'orders')"><img src="../assets/orders/at0.webp" alt=""></div>
-					<div @click="chosenElementFunc('at1', 'orders')"><img src="../assets/orders/at1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' at-1', 'orders')"> <img src="../assets/orders/at-1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' at0', 'orders')"><img src="../assets/orders/at0.webp" alt=""></div>
+					<div @click="chosenElementFunc(' at1', 'orders')"><img src="../assets/orders/at1.webp" alt=""></div>
 				</div>
 				<div class="supports">
-					<div @click="chosenElementFunc('def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
-					<div @click="chosenElementFunc('def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
-					<div @click="chosenElementFunc('def2', 'orders')"><img src="../assets/orders/def2.jpg" alt=""></div>
+					<div @click="chosenElementFunc(' def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' def2', 'orders')"><img src="../assets/orders/def2.jpg" alt=""></div>
 				</div>
 				<div class="raids">
-					<div @click="chosenElementFunc('raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
-					<div @click="chosenElementFunc('raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
-					<div @click="chosenElementFunc('raidSt', 'orders')"><img src="../assets/orders/raidSt.webp" alt=""></div>
+					<div @click="chosenElementFunc(' raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
+					<div @click="chosenElementFunc(' raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
+					<div @click="chosenElementFunc(' raidSt', 'orders')"><img src="../assets/orders/raidSt.webp" alt=""></div>
 				</div>
 				<div class="defends">
-					<div @click="chosenElementFunc('sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
-					<div @click="chosenElementFunc('sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
-					<div @click="chosenElementFunc('sup1', 'orders')"><img src="../assets/orders/sup1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
+					<div @click="chosenElementFunc(' sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
+					<div @click="chosenElementFunc(' sup1', 'orders')"><img src="../assets/orders/sup1.webp" alt=""></div>
 				</div>
 				<div class="Powertokens">
-					<div @click="chosenElementFunc('pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
-					<div @click="chosenElementFunc('pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
-					<div @click="chosenElementFunc('powSt', 'orders')">
+					<div @click="chosenElementFunc(' pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
+					<div @click="chosenElementFunc(' pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
+					<div @click="chosenElementFunc(' powSt', 'orders')">
 						<img src="../assets/orders/powSt.webp" alt="">
 					</div>
 				</div>
 			</div>
+			<button @click="flipOrders">reverse</button>
 			<div class="house_cards"></div>
 		</div>
 	</div>
-	<div class="test"></div>
+	
 </template>
 
 <style>
