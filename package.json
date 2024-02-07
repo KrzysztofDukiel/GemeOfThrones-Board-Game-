@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "socket.io": "^4.7.4",
     "sortablejs": "^1.15.2",

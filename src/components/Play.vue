@@ -1,4 +1,7 @@
 <script>
+import axios from 'axios';
+import { h } from 'vue';
+
 // import draggable from 'vuedraggable';
 export default {
 	// components: {
@@ -41,7 +44,7 @@ export default {
 			console.log(this.chosenElement);
 		},
 
-		calculateDistance(event) {
+		async calculateDistance(event) {
 			const boundingRect = event.target.getBoundingClientRect();
 			const offsetX = event.clientX - boundingRect.left;
 			const offsetY = event.clientY - boundingRect.top;
@@ -56,8 +59,23 @@ export default {
 			// if(this.type === "orders") {
 			// 	this.ordersArray.push()
 			// }
+
 			this.clickedCoordinates.y -= 30;
 			this.clickedCoordinates.x -= 30;
+				try {
+					const response = axios.post('http://localhost:3000/elements/add-element', {
+						type: this.type,
+						house: this.house,
+						position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
+						chosenElement: this.chosenElement,
+						className: this.type + ' ' + this.house + this.chosenElement,
+						revers: this.revers,
+					})
+					this.elementsArray.push(response)
+					console.log(response)
+				} catch (error) {
+					console.log(error)
+				}
 			console.log(this.type, this.chosenElement);
 			this.elementsArray.push({ // tu zmien
 				class: this.type + ' ' + this.house + this.chosenElement,
@@ -65,7 +83,7 @@ export default {
 				type: this.type,
 				chosenElement: this.chosenElement,
 				house: this.house,
-				revers: this.revers,
+				revers: true,
 			});
 
 			this.type = '';
@@ -112,6 +130,17 @@ export default {
 				}
 			});
 			
+		},
+		
+		async clearHouseOrders() {
+			try {
+				const response = axios.post('http://localhost:3000/elements/clear-orders', {
+					house:	this.house
+				})
+				console.log(response, this.house)
+			} catch (error) {
+				console.log(error)
+			}
 		}
 	},
 };
@@ -230,6 +259,7 @@ export default {
 			</div>
 			<button @click="Ready">Ready</button>
 			<button @click="UnReady">Unready</button>
+			<button @click="clearHouseOrders">Clear orders</button>
 
 			<div class="house_cards"></div>
 		</div>
