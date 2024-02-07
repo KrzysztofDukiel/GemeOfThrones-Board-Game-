@@ -13,6 +13,7 @@ export default {
 			house: '',
 			chosenElement: '',
 			elementsArray: [],
+			
 			//
 			type: '',
 			mapWidth: 2000,
@@ -20,14 +21,15 @@ export default {
 			clickedCoordinates: { x: 0, y: 0 },
 			distanceFromEdges: { top: 0, right: 0, bottom: 0, left: 0 },
 			preventClick: false,
-			revers: true
+			revers: true,
+			ready: false
 		};
 	},
 
 	methods: {
 		changeHouse(house) {
 			this.house = house;
-
+			this.ready = false
 			console.log(this.house);
 		},
 		chosenElementFunc(element, type) {
@@ -46,23 +48,26 @@ export default {
 
 			this.clickedCoordinates = { x: offsetX, y: offsetY };
 
-			if (this.chosenElement === '' || this.house === '' || this.preventClick) {
+			if (this.chosenElement === '' || this.house === '' || this.preventClick || this.ready) {
 				console.log(this.preventClick);
 				this.preventClick = false;
 				return 'no element chosen';
 			}
+			// if(this.type === "orders") {
+			// 	this.ordersArray.push()
+			// }
 			this.clickedCoordinates.y -= 30;
 			this.clickedCoordinates.x -= 30;
 			console.log(this.type, this.chosenElement);
-			this.elementsArray.push({
-				class: this.type + ' ' + this.house  + this.chosenElement,
+			this.elementsArray.push({ // tu zmien
+				class: this.type + ' ' + this.house + this.chosenElement,
 				position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
 				type: this.type,
 				chosenElement: this.chosenElement,
 				house: this.house,
-				revers: this.revers
+				revers: this.revers,
 			});
-			console.log(this.elementsArray);
+
 			this.type = '';
 			this.clickedCoordinates.y = null;
 			this.clickedCoordinates.x = null;
@@ -71,33 +76,43 @@ export default {
 		},
 		changePosition(index) {
 			this.preventClick = true;
-			if (this.house !== this.elementsArray[index].house) {
+			if (this.house !== this.elementsArray[index].house || !this.elementsArray[index].revers ) {
 				return 'wrong House';
 			}
 			console.log(this.elementsArray[index].house);
+			if('units' === this.elementsArray[index].type) {
+				
+			}
 			this.type = this.elementsArray[index].type;
 			this.chosenElement = this.elementsArray[index].chosenElement;
 
 			this.elementsArray.splice(index, 1);
-
-			console.log('działa?', index, this.elementsArray);
 		},
-		flipOrders() {
-			
-			console.log("działa?")
-			this.elementsArray.filter((elements)=> {
-				console.log(elements.type, elements.house, this.house, elements.revers)
-				if(elements.house === this.house && "orders" === elements.type) {
-					elements.revers = !elements.revers
-					if(!elements.revers) {
-						elements.class =  elements.class + this.house  + "R"
-						console.log("działa?", elements.revers )
-					} else {
-						elements.class.replace(this.house  + "R", "")
-					}
+		Ready() {
+			this.ready = true
+			this.elementsArray.filter((elements) => {
+				if (elements.house === this.house && 'orders' === elements.type && elements.revers) {
+					elements.revers = !elements.revers;
+						elements.class = elements.class + ' ' + this.house + 'R';
+						console.log(elements.class)
 				}
-			})
+			});
 		},
+		UnReady() {
+				this.ready = false
+				this.elementsArray.filter((elements) => {
+					
+				if (elements.house === this.house && 'orders' === elements.type && !elements.revers ) {
+					elements.revers = !elements.revers;
+						let  oldClass = elements.class
+						let  reversToRemove = " " + this.house + "R"
+						let undoRevers =  oldClass.replace(reversToRemove, "" )
+						console.log(undoRevers, oldClass , elements.revers)
+						elements.class = undoRevers
+				}
+			});
+			
+		}
 	},
 };
 </script>
@@ -122,8 +137,11 @@ export default {
 					v-bind:class="element.class"
 					:style="element.position"
 					@click="changePosition(index)"></div>
+					
 			</div>
+			
 		</div>
+		
 		<div>
 			<p>Koordynaty po kliknięciu: {{ clickedCoordinates }}</p>
 		</div>
@@ -155,42 +173,70 @@ export default {
 			<h2>Orders</h2>
 			<div class="tokens">
 				<div class="attacks">
-					<div @click="chosenElementFunc(' at-1', 'orders')"> <img src="../assets/orders/at-1.webp" alt=""></div>
-					<div @click="chosenElementFunc(' at0', 'orders')"><img src="../assets/orders/at0.webp" alt=""></div>
-					<div @click="chosenElementFunc(' at1', 'orders')"><img src="../assets/orders/at1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' at-1', 'orders')">
+						<img src="../assets/orders/at-1.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' at0', 'orders')">
+						<img src="../assets/orders/at0.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' at1', 'orders')">
+						<img src="../assets/orders/at1.webp" alt="" />
+					</div>
 				</div>
 				<div class="supports">
-					<div @click="chosenElementFunc(' def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
-					<div @click="chosenElementFunc(' def1', 'orders')"><img src="../assets/orders/def1.webp" alt=""></div>
-					<div @click="chosenElementFunc(' def2', 'orders')"><img src="../assets/orders/def2.jpg" alt=""></div>
+					<div @click="chosenElementFunc(' def1', 'orders')">
+						<img src="../assets/orders/def1.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' def1', 'orders')">
+						<img src="../assets/orders/def1.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' def2', 'orders')">
+						<img src="../assets/orders/def2.jpg" alt="" />
+					</div>
 				</div>
 				<div class="raids">
-					<div @click="chosenElementFunc(' raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
-					<div @click="chosenElementFunc(' raid', 'orders')"><img src="../assets/orders/raid.webp" alt=""></div>
-					<div @click="chosenElementFunc(' raidSt', 'orders')"><img src="../assets/orders/raidSt.webp" alt=""></div>
+					<div @click="chosenElementFunc(' raid', 'orders')">
+						<img src="../assets/orders/raid.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' raid', 'orders')">
+						<img src="../assets/orders/raid.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' raidSt', 'orders')">
+						<img src="../assets/orders/raidSt.webp" alt="" />
+					</div>
 				</div>
 				<div class="defends">
-					<div @click="chosenElementFunc(' sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
-					<div @click="chosenElementFunc(' sup', 'orders')"><img src="../assets/orders/sup.webp" alt=""></div>
-					<div @click="chosenElementFunc(' sup1', 'orders')"><img src="../assets/orders/sup1.webp" alt=""></div>
+					<div @click="chosenElementFunc(' sup', 'orders')">
+						<img src="../assets/orders/sup.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' sup', 'orders')">
+						<img src="../assets/orders/sup.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' sup1', 'orders')">
+						<img src="../assets/orders/sup1.webp" alt="" />
+					</div>
 				</div>
 				<div class="Powertokens">
-					<div @click="chosenElementFunc(' pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
-					<div @click="chosenElementFunc(' pow', 'orders')"><img src="../assets/orders/pow.webp" alt=""></div>
+					<div @click="chosenElementFunc(' pow', 'orders')">
+						<img src="../assets/orders/pow.webp" alt="" />
+					</div>
+					<div @click="chosenElementFunc(' pow', 'orders')">
+						<img src="../assets/orders/pow.webp" alt="" />
+					</div>
 					<div @click="chosenElementFunc(' powSt', 'orders')">
-						<img src="../assets/orders/powSt.webp" alt="">
+						<img src="../assets/orders/powSt.webp" alt="" />
 					</div>
 				</div>
 			</div>
-			<button @click="flipOrders">reverse</button>
+			<button @click="Ready">Ready</button>
+			<button @click="UnReady">Unready</button>
+
 			<div class="house_cards"></div>
 		</div>
 	</div>
-	
 </template>
 
 <style>
-
 .map {
 	position: relative;
 	margin: auto;
@@ -237,9 +283,9 @@ export default {
 }
 .tokens img {
 	width: 60px;
-  height: 60px;
-  object-fit: contain;
-  cursor: pointer;
+	height: 60px;
+	object-fit: contain;
+	cursor: pointer;
 }
 </style>
 
