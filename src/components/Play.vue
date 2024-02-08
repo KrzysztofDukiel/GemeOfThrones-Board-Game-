@@ -28,6 +28,21 @@ export default {
 			ready: false
 		};
 	},
+	watch:{
+		elementsArray(){
+			return this.elementsArray
+		}
+	},
+	mounted: 
+	async function() {
+		try {
+				const response = await axios.get('http://localhost:3000/elements/show')
+				console.log(response.data)
+				this.elementsArray = await response.data
+			} catch (error) {
+				console.log(error)
+			}
+        },
 
 	methods: {
 		changeHouse(house) {
@@ -131,8 +146,10 @@ export default {
 			});
 			
 		},
+
 		
 		async clearHouseOrders() {
+			console.log(this.house)
 			try {
 				const response = axios.post('http://localhost:3000/elements/clear-orders', {
 					house:	this.house
@@ -141,8 +158,22 @@ export default {
 			} catch (error) {
 				console.log(error)
 			}
+		},
+		async getArray() {
+			
+			try {
+				const response = await axios.get('http://localhost:3000/elements/show')
+				console.log(response.data)
+				this.elementsArray = await response.data
+			} catch (error) {
+				console.log(error)
+			}
+		},
+		checkArray(){
+			console.log(this.elementsArray)
 		}
 	},
+	
 };
 </script>
 
@@ -260,6 +291,8 @@ export default {
 			<button @click="Ready">Ready</button>
 			<button @click="UnReady">Unready</button>
 			<button @click="clearHouseOrders">Clear orders</button>
+			
+			<button @click="checkArray">test check array</button>
 
 			<div class="house_cards"></div>
 		</div>
@@ -318,34 +351,3 @@ export default {
 	cursor: pointer;
 }
 </style>
-
-<!-- .Baratheon {
-	background-color: yellow;
-
-}
-.Lannister {
-	background-color: red;
-}
-.Tully {
-	background-color: rgb(27, 25, 170);
-}
-.Arryn {
-	background-color: lightblue;
-}
-.Targ {
-	background-color: violet;
-}
-.Stark {
-	background-color: white;
-}
-.Tyller {
-	background-color: rgb(40, 196, 40);
-}
-.Martell {
-	background-color: orange;
-}
-.Grajoy {
-	background-color: black;
-}
-style="background-image: url('../assets/' + {{ type }}+'/'+ {{ chosenElement }}+ '.webp;');"
- -->
