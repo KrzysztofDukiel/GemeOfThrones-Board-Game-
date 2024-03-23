@@ -1,53 +1,43 @@
 <script>
 import axios from 'axios';
 import { h } from 'vue';
+import { state } from '../socket';
 
 // import draggable from 'vuedraggable';
 export default {
-	// components: {
-	//   draggable,
-	// },
 	data() {
 		return {
-			imageX: 1000, // Dostosuj kordynaty X
-			imageY: 1000, // Dostosuj kordynaty Y
-			imageSize: 2000, // Dostosuj wielkość zdjęcia,
-			// kolor frakcji rodzje figurki lista elemntow na planszy
 			house: '',
 			chosenElement: '',
 			elementsArray: [],
-			
+
 			//
 			type: '',
 			mapWidth: 2000,
 			mapHeight: 2257,
 			clickedCoordinates: { x: 0, y: 0 },
-			distanceFromEdges: { top: 0, right: 0, bottom: 0, left: 0 },
 			preventClick: false,
 			revers: true,
-			ready: false
+			ready: false,
+			message: '',
+			name: 'ConnectionState',
 		};
 	},
-	watch:{
-		elementsArray(){
-			return this.elementsArray
-		}
+	watch: {
+		elementsArray() {
+			return this.elementsArray;
+		},
 	},
-	mounted: 
-	async function() {
-		try {
-				const response = await axios.get('http://localhost:3000/elements/show')
-				console.log(response.data)
-				this.elementsArray = await response.data
-			} catch (error) {
-				console.log(error)
-			}
-        },
+	computed: {
+		connected() {
+			return state.connected;
+		},
+	},
 
 	methods: {
 		changeHouse(house) {
 			this.house = house;
-			this.ready = false
+			this.ready = false;
 			console.log(this.house);
 		},
 		chosenElementFunc(element, type) {
@@ -66,33 +56,39 @@ export default {
 
 			this.clickedCoordinates = { x: offsetX, y: offsetY };
 
-			if (this.chosenElement === '' || this.house === '' || this.preventClick || this.ready) {
+			if (
+				this.chosenElement === '' ||
+				this.house === '' ||
+				this.preventClick ||
+				this.ready
+			) {
 				console.log(this.preventClick);
 				this.preventClick = false;
 				return 'no element chosen';
 			}
-			// if(this.type === "orders") {
-			// 	this.ordersArray.push()
-			// }
 
 			this.clickedCoordinates.y -= 30;
 			this.clickedCoordinates.x -= 30;
-				try {
-					const response = axios.post('http://localhost:3000/elements/add-element', {
+			try {
+				const response = axios.post(
+					'http://localhost:3000/elements/add-element',
+					{
 						type: this.type,
 						house: this.house,
 						position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
 						chosenElement: this.chosenElement,
 						className: this.type + ' ' + this.house + this.chosenElement,
 						revers: this.revers,
-					})
-					this.elementsArray.push(response)
-					console.log(response)
-				} catch (error) {
-					console.log(error)
-				}
+					}
+				);
+				this.elementsArray.push(response);
+				console.log(response);
+			} catch (error) {
+				console.log(error);
+			}
 			console.log(this.type, this.chosenElement);
-			this.elementsArray.push({ // tu zmien
+			this.elementsArray.push({
+				// tu zmien
 				class: this.type + ' ' + this.house + this.chosenElement,
 				position: `position: absolute; top: ${this.clickedCoordinates.y}px; left: ${this.clickedCoordinates.x}px;`,
 				type: this.type,
@@ -109,12 +105,14 @@ export default {
 		},
 		changePosition(index) {
 			this.preventClick = true;
-			if (this.house !== this.elementsArray[index].house || !this.elementsArray[index].revers ) {
+			if (
+				this.house !== this.elementsArray[index].house ||
+				!this.elementsArray[index].revers
+			) {
 				return 'wrong House';
 			}
 			console.log(this.elementsArray[index].house);
-			if('units' === this.elementsArray[index].type) {
-				
+			if ('units' === this.elementsArray[index].type) {
 			}
 			this.type = this.elementsArray[index].type;
 			this.chosenElement = this.elementsArray[index].chosenElement;
@@ -122,58 +120,73 @@ export default {
 			this.elementsArray.splice(index, 1);
 		},
 		Ready() {
-			this.ready = true
+			this.ready = true;
 			this.elementsArray.filter((elements) => {
-				if (elements.house === this.house && 'orders' === elements.type && elements.revers) {
+				if (
+					elements.house === this.house &&
+					'orders' === elements.type &&
+					elements.revers
+				) {
 					elements.revers = !elements.revers;
-						elements.class = elements.class + ' ' + this.house + 'R';
-						console.log(elements.class)
+					elements.class = elements.class + ' ' + this.house + 'R';
+					console.log(elements.class);
 				}
 			});
 		},
 		UnReady() {
-				this.ready = false
-				this.elementsArray.filter((elements) => {
-					
-				if (elements.house === this.house && 'orders' === elements.type && !elements.revers ) {
+			this.ready = false;
+			this.elementsArray.filter((elements) => {
+				if (
+					elements.house === this.house &&
+					'orders' === elements.type &&
+					!elements.revers
+				) {
 					elements.revers = !elements.revers;
-						let  oldClass = elements.class
-						let  reversToRemove = " " + this.house + "R"
-						let undoRevers =  oldClass.replace(reversToRemove, "" )
-						console.log(undoRevers, oldClass , elements.revers)
-						elements.class = undoRevers
+					let oldClass = elements.class;
+					let reversToRemove = ' ' + this.house + 'R';
+					let undoRevers = oldClass.replace(reversToRemove, '');
+					console.log(undoRevers, oldClass, elements.revers);
+					elements.class = undoRevers;
 				}
 			});
-			
 		},
 
-		
 		async clearHouseOrders() {
-			console.log(this.house)
+			console.log(this.house);
 			try {
-				const response = axios.post('http://localhost:3000/elements/clear-orders', {
-					house:	this.house
-				})
-				console.log(response, this.house)
+				const response = axios.post(
+					'http://localhost:3000/elements/clear-orders',
+					{
+						house: this.house,
+					}
+				);
+				console.log(response, this.house);
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 			}
 		},
 		async getArray() {
-			
 			try {
-				const response = await axios.get('http://localhost:3000/elements/show')
-				console.log(response.data)
-				this.elementsArray = await response.data
+				const response = await axios.get('http://localhost:3000/elements/show');
+				console.log(response.data);
+				this.elementsArray = await response.data;
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 			}
 		},
-		checkArray(){
-			console.log(this.elementsArray)
+		checkArray() {
+			console.log(this.elementsArray);
+		},
+	},
+	mounted: async function () {
+		try {
+			const response = await axios.get('http://localhost:3000/elements/show');
+			console.log(response.data);
+			this.elementsArray = await response.data;
+		} catch (error) {
+			console.log(error);
 		}
 	},
-	
 };
 </script>
 
@@ -181,27 +194,93 @@ export default {
 	<div class="play">
 		<h1>Good luck have fun</h1>
 		<div class="map" @click="calculateDistance">
-			<img
-				src="../assets/9PlayersMap.jpg"
-				alt=""
-				class="map_img"
-				:style="{
-					left: imageX + 'px',
-					top: imageY + 'px',
-					width: imageSize + 'px',
-				}" />
-			<div
-				style="position: absolute; top: {{ clickedCoordinates.y }}px; left: {{ clickedCoordinates.x }}px; background-color: red; width: 10px; height: 10px;"></div>
+			<img src="../assets/9map.png" alt="" class="map_img" />
+			<!-- <div
+				style="position: absolute; top: {{ clickedCoordinates.y }}px; left: {{ clickedCoordinates.x }}px; background-color: red; width: 10px; height: 10px;"></div> -->
 			<div v-for="(element, index) in elementsArray" :key="element.position">
 				<div
 					v-bind:class="element.class"
 					:style="element.position"
 					@click="changePosition(index)"></div>
-					
 			</div>
 			
+				<div class="a1 mapClass"></div>
+				<div class="a2 mapClass"></div>
+				<div class="a3 mapClass"></div>
+				<div class="a4 mapClass"></div>
+				<div class="a5 mapClass"></div>
+				<div class="a6 mapClass"></div>
+				<div class="a7 mapClass"></div>
+				<div class="a8 mapClass"></div>
+				<div class="a9 mapClass"></div>
+				<div class="a10 mapClass"></div>
+				<div class="a11 mapClass"></div>
+				<div class="a12 mapClass"></div>
+				<div class="a13 mapClass"></div>
+				<div class="a14 mapClass"></div>
+				<div class="a15 mapClass"></div>
+				<div class="a16 mapClass"></div>
+				<div class="a17 mapClass"></div>
+				<div class="a18 mapClass"></div>
+				<div class="a19 mapClass"></div>
+				<div class="a20 mapClass"></div>
+				<div class="a21 mapClass"></div>
+				<div class="a22 mapClass"></div>
+				<div class="a23 mapClass"></div>
+				<div class="a24 mapClass"></div>
+				<div class="a25 mapClass"></div>
+				<div class="a26 mapClass"></div>
+				<div class="a27 mapClass"></div>
+				<div class="a28 mapClass"></div>
+				<div class="a29 mapClass"></div>
+				<div class="a30 mapClass"></div>
+				<div class="a31 mapClass"></div>
+				<div class="a32 mapClass"></div>
+				<div class="a33 mapClass"></div>
+				<div class="a34 mapClass"></div>
+				<div class="a35 mapClass"></div>
+				<div class="a36 mapClass"></div>
+				<div class="a37 mapClass"></div>
+				<div class="a38 mapClass"></div>
+				<div class="a39 mapClass"></div>
+				<div class="a40 mapClass"></div>
+				<div class="a41 mapClass"></div>
+				<div class="a42 mapClass"></div>
+				<div class="a43 mapClass"></div>
+				<div class="a44 mapClass"></div>
+				<div class="a45 mapClass"></div>
+				<div class="a46 mapClass"></div>
+				<div class="a47 mapClass"></div>
+				<div class="a48 mapClass"></div>
+				<div class="a49 mapClass"></div>
+				<div class="a50 mapClass"></div>
+				<div class="a51 mapClass"></div>
+				<div class="a52 mapClass"></div>
+				<div class="a53 mapClass"></div>
+				<div class="a54 mapClass"></div>
+				<div class="a55 mapClass"></div>
+				<div class="a56 mapClass"></div>
+				<div class="a57 mapClass"></div>
+				<div class="a58 mapClass"></div>
+				<div class="a59 mapClass"></div>
+				<div class="a60 mapClass"></div>
+				<div class="a61 mapClass"></div>
+				<div class="a62 mapClass"></div>
+				<div class="a63 mapClass"></div>
+				<div class="a64 mapClass"></div>
+				<div class="a65 mapClass"></div>
+				<div class="a66 mapClass"></div>
+				<div class="a67 mapClass"></div>
+				<div class="a68 mapClass"></div>
+				<div class="a69 mapClass"></div>
+				<div class="a70 mapClass"></div>
+				<div class="a71 mapClass"></div>
+				<div class="a72 mapClass"></div>
+				<div class="a73 mapClass"></div>
+				<div class="a74 mapClass"></div>
+				<div class="a75 mapClass"></div>
+			
 		</div>
-		
 		<div>
 			<p>Koordynaty po kliknięciu: {{ clickedCoordinates }}</p>
 		</div>
@@ -291,7 +370,7 @@ export default {
 			<button @click="Ready">Ready</button>
 			<button @click="UnReady">Unready</button>
 			<button @click="clearHouseOrders">Clear orders</button>
-			
+
 			<button @click="checkArray">test check array</button>
 
 			<div class="house_cards"></div>
