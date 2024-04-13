@@ -194,8 +194,9 @@ export default {
 	<div class="play">
 		<h1>Good luck have fun</h1>
 		<div class="map" @click="calculateDistance">
-			<img src="../assets/9map.png" alt="" class="map_img" />
-			
+
+			<img src="../assets/map9.jpg" alt="" class="map_img" />
+			<img class="svg" src="../assets/maptexture.svg" alt="">
 			<div v-for="(element, index) in elementsArray" :key="element.position">
 				<div
 					v-bind:class="element.class"
@@ -203,87 +204,13 @@ export default {
 					@click="changePosition(index)"></div>
 			</div>
 
-			<div class="s1 mapClass">
-				<!-- <img class="test" src="../assets/SVGTecstureFiled/AnyConv.com__Bear Island.svg" alt=""> -->
+			<!-- <div class="s1 mapClass">
+				
 				<svg>
 					<use xlink:href="../assets/SVGTecsture/Bear-Island.svg"></use>
 				</svg>
-			</div>
-			<div class="s2 mapClass"></div>
-			<div class="s3 mapClass"></div>
-			<div class="s4 mapClass"></div>
-			<div class="s5 mapClass"></div>
-			<div class="s6 mapClass"></div>
-			<div class="s7 mapClass"></div>
-			<div class="s8 mapClass"></div>
-			<div class="s9 mapClass"></div>
-			<div class="s10 mapClass"></div>
-			<div class="s11 mapClass"></div>
-			<div class="s12 mapClass"></div>
-			<div class="s13 mapClass"></div>
-			<div class="s14 mapClass"></div>
-			<div class="s15 mapClass"></div>
-			<div class="s16 mapClass"></div>
-			<div class="s17 mapClass"></div>
-			<div class="s18 mapClass"></div>
-
-			<div class="a1 mapClass"></div>
-			<div class="a2 mapClass"></div>
-			<div class="a3 mapClass"></div>
-			<div class="a4 mapClass"></div>
-			<div class="a5 mapClass"></div>
-			<div class="a6 mapClass"></div>
-			<div class="a7 mapClass"></div>
-			<div class="a8 mapClass"></div>
-			<div class="a9 mapClass"></div>
-			<div class="a10 mapClass"></div>
-			<div class="a11 mapClass"></div>
-			<div class="a12 mapClass"></div>
-			<div class="a13 mapClass"></div>
-			<div class="a14 mapClass"></div>
-			<div class="a15 mapClass"></div>
-			<div class="a16 mapClass"></div>
-			<div class="a17 mapClass"></div>
-			<div class="a18 mapClass"></div>
-			<div class="a19 mapClass"></div>
-			<div class="a20 mapClass"></div>
-			<div class="a21 mapClass"></div>
-			<div class="a22 mapClass"></div>
-			<div class="a23 mapClass"></div>
-			<div class="a24 mapClass"></div>
-			<div class="a25 mapClass"></div>
-			<div class="a26 mapClass"></div>
-			<div class="a27 mapClass"></div>
-			<div class="a28 mapClass"></div>
-			<div class="a29 mapClass"></div>
-			<div class="a30 mapClass"></div>
-			<div class="a31 mapClass"></div>
-			<div class="a32 mapClass"></div>
-			<div class="a33 mapClass"></div>
-			<div class="a34 mapClass"></div>
-			<div class="a35 mapClass"></div>
-			<div class="a36 mapClass"></div>
-			<div class="a37 mapClass"></div>
-			<div class="a38 mapClass"></div>
-			<div class="a39 mapClass"></div>
-			<div class="a40 mapClass"></div>
-			<div class="a41 mapClass"></div>
-			<div class="a42 mapClass"></div>
-			<div class="a43 mapClass"></div>
-			<div class="a44 mapClass"></div>
-			<div class="a45 mapClass"></div>
-			<div class="a46 mapClass"></div>
-			<div class="a47 mapClass"></div>
-			<div class="a48 mapClass"></div>
-			<div class="a49 mapClass"></div>
-			<div class="a50 mapClass"></div>
-			<div class="a51 mapClass"></div>
-			<div class="a52 mapClass"></div>
-			<div class="a53 mapClass"></div>
-			<div class="a54 mapClass"></div>
-			<div class="a55 mapClass"></div>
-			<div class="a56 mapClass"></div>
-			<div class="a57 mapClass"></div>
+			</div> -->
+			
 		</div>
 		<div>
 			<p>Koordynaty po kliknięciu: {{ clickedCoordinates }}</p>
@@ -383,16 +310,25 @@ export default {
 </template>
 
 <style>
+.svg {
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	
+}
 .map {
 	/* position: relative; */
 	margin: auto;
-	width: 2200px;
+	width: 3218px;
+	height: 4097px;
 }
 .map_img {
-	width: auto;
-	max-width: 100%;
-	max-height: 100%;
+	
+	width: 3218px;
+	height: 4097px;
 	transform: scale(1);
+	position: absolute;
+	left: 0;
 }
 
 .houses_list {

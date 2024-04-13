@@ -4,19 +4,19 @@
 	<div class="background">
 		<div class="container menu">
 			<div class="menu_bar">
-				<h2 class="menu_bar_title">Game of throns</h2>
+				<h2 class="menu_bar_title">Board Game </h2>
 				<p>extended edidtion</p>
 				<ul class="menu_bar_list">
-					<li><router-link to="/" class="test">Home</router-link></li>
-					<li><router-link to="/games" class="test">Games</router-link></li>
+					<li><router-link to="/" class="test1">Home</router-link></li>
+					<li><router-link to="/games" class="test1">Games</router-link></li>
 					<li>
-						<router-link to="/your-games" class="test">Your games</router-link>
+						<router-link to="/your-games" class="test1">Your games</router-link>
 					</li>
 					<li>
-						<router-link to="/register" class="test">Register</router-link>
+						<router-link to="/register" class="test1">Register</router-link>
 					</li>
 					<li>
-						<router-link to="/login" class="test">Login</router-link>
+						<router-link to="/login" class="test1">Login</router-link>
 					</li>
 				</ul>
 			</div>
@@ -69,7 +69,7 @@
 	font-size: 30px;
 	width: 130px;
 }
-.test {
+.test1 {
 	text-decoration: none;
 	color: white;
 }
