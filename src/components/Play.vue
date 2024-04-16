@@ -196,20 +196,15 @@ export default {
 		<div class="map" @click="calculateDistance">
 
 			<img src="../assets/map9.jpg" alt="" class="map_img" />
-			<img class="svg" src="../assets/maptexture.svg" alt="">
+			<!-- <img class="svg" src="../assets/maptexture.svg" alt=""> -->
+			<object type="image/svg+xml" data="../assets/maptexture.svg">Your browser does not support SVG</object>
 			<div v-for="(element, index) in elementsArray" :key="element.position">
 				<div
 					v-bind:class="element.class"
 					:style="element.position"
 					@click="changePosition(index)"></div>
 			</div>
-
-			<!-- <div class="s1 mapClass">
-				
-				<svg>
-					<use xlink:href="../assets/SVGTecsture/Bear-Island.svg"></use>
-				</svg>
-			</div> -->
+			
 			
 		</div>
 		<div>
