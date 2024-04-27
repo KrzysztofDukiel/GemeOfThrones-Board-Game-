@@ -1,6 +1,5 @@
 <script>
 import axios from 'axios';
-import { h } from 'vue';
 import { state } from '../socket';
 
 // import draggable from 'vuedraggable';
@@ -13,9 +12,8 @@ export default {
 
 			//
 			type: '',
-			mapWidth: 2000,
-			mapHeight: 2257,
-			clickedCoordinates: { x: 0, y: 0 },
+		
+			
 			preventClick: false,
 			revers: true,
 			ready: false,
@@ -49,12 +47,8 @@ export default {
 			console.log(this.chosenElement);
 		},
 
-		async calculateDistance(event) {
-			const boundingRect = event.target.getBoundingClientRect();
-			const offsetX = event.clientX - boundingRect.left;
-			const offsetY = event.clientY - boundingRect.top;
-
-			this.clickedCoordinates = { x: offsetX, y: offsetY };
+		async calculateDistance() {
+			
 
 			if (
 				this.chosenElement === '' ||
@@ -195,9 +189,8 @@ export default {
 		<h1>Good luck have fun</h1>
 		<div class="map" @click="calculateDistance">
 
-			<img src="../assets/map9.jpg" alt="" class="map_img" />
-			<!-- <img class="svg" src="../assets/maptexture.svg" alt=""> -->
-			<object type="image/svg+xml" data="../assets/maptexture.svg">Your browser does not support SVG</object>
+			<img  src="../assets/SVGSize.svg" alt="" class="map_img" />
+			
 			<div v-for="(element, index) in elementsArray" :key="element.position">
 				<div
 					v-bind:class="element.class"
@@ -305,26 +298,21 @@ export default {
 </template>
 
 <style>
-.svg {
+	
+
+.map img {
 	position: absolute;
-	z-index: 10;
-	left: 0;
+	scale: 0.6;
 	
 }
-.map {
-	/* position: relative; */
-	margin: auto;
-	width: 3218px;
-	height: 4097px;
-}
-.map_img {
+/* .map_img {
 	
 	width: 3218px;
 	height: 4097px;
 	transform: scale(1);
 	position: absolute;
 	left: 0;
-}
+} */
 
 .houses_list {
 	cursor: pointer;
