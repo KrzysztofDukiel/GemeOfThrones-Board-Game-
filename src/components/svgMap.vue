@@ -146,6 +146,7 @@
   </script>
   
   <style scoped>
+    
         .svg1 {
             top: 50px;
             left: -30px;
