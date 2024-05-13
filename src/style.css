@@ -1,79 +1,197 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.at-1 {
+	background-image: url('./assets//orders/at-1.webp');
+}
+.at0 {
+	background-image: url('./assets//orders/at0.webp');
+}
+.at1 {
+	background-image: url('./assets//orders/at1.webp');
+}
+.def1 {
+	background-image: url('./assets//orders/def1.webp');
+}
+.def2 {
+	background-image: url('./assets//orders/def2.jpg');
+}
+.pow {
+	background-image: url('./assets//orders/pow.webp');
+}
+.powSt {
+	background-image: url('./assets//orders/powSt.webp');
+}
+.raid {
+	background-image: url('./assets//orders/raid.webp');
+}
+.raidSt {
+	background-image: url('./assets//orders/raidSt.webp');
+}
+.sup {
+	background-image: url('./assets//orders/sup.webp');
+}
+.sup1 {
+	background-image: url('./assets//orders/sup1.webp');
+}
+.atSea {
+	background-image: url('./assets//orders/atSea.webp');
+}
+.Baratheon {
+	border: 2px solid yellow;
+}
+.Lannister {
+	border: 2px solid red;
+}
+.Tully {
+	border: 2px solid rgb(27, 25, 170);
+}
+.Arryn {
+	border: 2px solid lightblue;
+}
+.Targ {
+	border: 2px solid violet;
+}
+.Stark {
+	border: 2px solid white;
+}
+.Tyller {
+	border: 2px solid rgb(40, 196, 40);
+}
+.Martell {
+	border: 2px solid orange;
+}
+.Grejoy {
+	border: 2px solid black;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.Arrynk {
+	background-image: url(./assets//units/Ak.png);
 }
-a:hover {
-  color: #535bf2;
+.Arrynp {
+	background-image: url(./assets//units/Ap.png);
+}
+.Arryns {
+	background-image: url(./assets//units/As.png);
+}
+.Arrynw {
+	background-image: url(./assets//units/AW.png);
 }
 
+.Baratheonk {
+	background-image: url(./assets//units/Bk.png);
+}
+.Baratheonp {
+	background-image: url(./assets//units/Bp.png);
+}
+.Baratheons {
+	background-image: url(./assets//units/Bs.png);
+}
+.Baratheonw {
+	background-image: url(./assets//units/Bw.png);
+}
+.Grejoyk {
+	background-image: url(./assets//units/Gk.png);
+}
+.Grejoyp {
+	background-image: url(./assets//units/Gp.png);
+}
+.Grejoys {
+	background-image: url(./assets//units/Gs.png);
+}
+.Grejoyw {
+	background-image: url(./assets//units/Gw.png);
+}
+.Lannisterk {
+	background-image: url(./assets//units/Lk.png);
+}
+.Lannisterp {
+	background-image: url(./assets//units/Lp.png);
+}
+.Lannisters {
+	background-image: url(./assets//units/Ls.png);
+}
+.Lannisterw {
+	background-image: url(./assets//units/Lw.png);
+}
+.Martellk {
+	background-image: url(./assets//units/Mk.png);
+}
+.Martellp {
+	background-image: url(./assets//units/Mp.png);
+}
+.Martells {
+	background-image: url(./assets//units/Ms.png);
+}
+.Martellw {
+	background-image: url(./assets//units/Mw.png);
+}
+.Starkk {
+	background-image: url(./assets//units/Sk.png);
+}
+.Starkp {
+	background-image: url(./assets//units/Sp.png);
+}
+.Starks {
+	background-image: url(./assets//units/Ss.png);
+}
+.Starkw {
+	background-image: url(./assets//units/Sw.png);
+}
+.Tyllerk {
+	background-image: url(./assets//units/Tk.png);
+}
+.Tyllerp {
+	background-image: url(./assets//units/Tp.png);
+}
+.Tyllers {
+	background-image: url(./assets//units/Ts.png);
+}
+.Tyllerw {
+	background-image: url(./assets//units/Tw.png);
+}
+
+.BaratheonR {
+	background-image: url('./assets/orders/revers/Break.png');
+}
+.LannisterR {
+	background-image: url('./assets/orders/revers/Lan.png');
+}
+.TullyR {
+	background-image: url('./assets/orders/revers/Tlly.png');
+}
+.ArrynR {
+	background-image: url('./assets/orders/revers/arrange.png');
+}
+.TargR {
+	background-image: url('./assets/orders/revers/Break.png');
+}
+.StarkR {
+	background-image: url('./assets/orders/revers/Start.png');
+}
+.TyllerR {
+	background-image: url('./assets/orders/revers/turlaj.png');
+}
+.MartellR {
+	background-image: url('./assets/orders/revers/diuna.png');
+}
+.GrejoyR {
+	background-image: url('./assets/orders/revers/Greek.png');
+}
+
+.container {
+	margin-inline: 200px;
+}
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+	margin: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* .mapClass {
+	opacity: 0.8;
+} */
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+/* .svg{
+	fill: none;
+} */
 
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.svg1 {
+	border: 30px solid black;	
+	fill: none;
 }
