@@ -5,11 +5,13 @@ export default {
 			gameName: false,
 			password: null,
 			mode: false,
-			gameList: [],
+			gameList: [{gameName: "gra 1", numberOfPLayers: 8, gameHost: "nick", open: false, }, {gameName: "gra 2", numberOfPLayers: 4, gameHost: "nick", open: false, }, {gameName: "gra 3", numberOfPLayers: 5, gameHost: "nick", open: false, }],
 		};
 	},
 	methods: {
-		hostGame() {},
+		hostGame(name, nick) {
+			this.gameList.push({gameName: name, numberOfPLayers: 1, gameHost: nick })
+		},
 	},
 };
 </script>
@@ -23,45 +25,20 @@ export default {
 				<input type="text" name="text" id="gameName" />
 				<p>Mode</p>
 				<input type="text" name="text" id="mode" />
-				<p>Game password</p>
-				<input type="password" name="password" id="password" />
-
+				
+				<br/>
 				<button>start</button>
 			</div>
 			<div class="game_join">
 				<h3>Join Game</h3>
 				<div class="game_join_list">
 					<ul>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
+						<li v-for="game in gameList" >
+							<h5>{{ game.gameName }}</h5>
+							<p>{{ game.gameHost }}</p>
+							<div><span>{{game.numberOfPLayers}}/9</span><button>join</button></div>
 						</li>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-						<li>
-							<h5>test1</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-						<li>
-							<h5>test1fsddddddddddddddddddddddddddddd</h5>
-							<div><span>8/9</span><button>join</button></div>
-						</li>
-
-						<!-- dodaj zawianie tekstu do 3 kropek jesli nie ma miejsca -->
+						
 					</ul>
 				</div>
 			</div>

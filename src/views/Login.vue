@@ -5,7 +5,7 @@ import Login from "../components/Login.vue"
 
 <template>
 	<Navbar/>
-	zmiany
+	
 	<Login/>
 </template>
 

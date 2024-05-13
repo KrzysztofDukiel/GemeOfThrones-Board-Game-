@@ -9,22 +9,14 @@
         <div class="content">
             <div class="content_info">
                 <h1>Welcome to my board game</h1>
-                <h2>What is about</h2>
+                <h2>What it is about</h2>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maxime unde qui error beatae mollitia sunt doloribus atque aspernatur cupiditate. Ea dolores possimus quam repellendus, eveniet sequi? Doloribus, a accusamus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur sint nostrum, nesciunt ipsum quo cupiditate vero laudantium fuga eius quae est maxime ratione nam sed nulla repudiandae consequuntur rerum fugiat, laborum commodi doloremque. Voluptatibus quam ullam provident dolor culpa pariatur.</p>
                 <button>show map</button>
             </div>
             <div>
                 <div class="content_rules">
                     <h3>Rules</h3>
-                    <ul>
-                        <li>zasady</li>
-                        <li>sa </li>
-                        <li>tu </li>
-                        <li>po </li>
-                        <li>to</li>
-                        <li>zeby</li>
-                        <li>je łamac</li>
-                    </ul>
+                    
                 </div>
                 <div class="content_me">
                     <h3>About me</h3>
@@ -41,7 +33,7 @@
 .background_main {
     background-image: url(../assets/denerys_on-thron.jpg);
     margin-top: 0;
-    height: 600px;
+    height: 800px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -70,11 +62,5 @@
     max-width: 200px;
     margin-top: 40px;
 }
-/* .content_img {
-   max-width: 500px;
 
-    background-image: url(../assets/9PlayersMap.jpg);
-    height: 400px;
-    
-} */
 </style>
