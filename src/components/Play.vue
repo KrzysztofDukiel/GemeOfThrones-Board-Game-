@@ -1,37 +1,24 @@
-<script>
+
+
+<script setup>
 import axios from 'axios';
+import svgMap from "./svgMap.vue";
+import { ref } from 'vue';
+let houses = ref(["Baratheon", "Lannister", "Stark", "Grejoy", "Tyller", "Martell", "Tully", "Arryn", "Targaryen"])
 
-export default {
-	data() {
-		return {
-			houses: ["Baratheon", "Lannister", "Stark", "Grejoy", "Tyller", "Martell", "Tully", "Targaryen"],
-			units: ["Footman", "Knight", "Sige tower", "Ship"]
-		};
-	},
-	watch: {
-		
-	},
-	computed: {
-	
-	},
 
-	methods: {
-	
-		
-	},
-	mounted: async function () {
-		try {
-			const response = await axios.get('http://localhost:3000/elements/show');
-			console.log(response.data);
-			this.elementsArray = await response.data;
-		} catch (error) {
-			console.log(error);
-		}
-	},
-};
+const units = ref(["Footman", "Knight", "Sige tower", "Ship"])
+
+function changeHouseName() {
+	console.log(houses.value)
+	houses = ref(["bara", 'targ', "lanni"])
+	console.log(houses.value)
+}
+
 </script>
 
 <template>
+	<svgMap/>
 	<div class="play">
 		<h1>Good luck have fun</h1>
 		<div class="map" @click="calculateDistance">
@@ -47,7 +34,7 @@ export default {
 			<div class="houses">
 				<h2>Chose your house</h2>
 				<ul class="houses_list"  >
-					<!-- dostosowac do mapy roboczo robimy na sztywno -->
+					
 					<li v-for="house in houses" @click="chooseHouse()" >{{ house }}</li>
 					
 				</ul>
@@ -117,7 +104,7 @@ export default {
 					</div>
 				</div>
 			</div>
-			
+			<button @click="changeHouseName">sss</button>
 			<div class="house_cards"></div>
 		</div>
 	</div>
@@ -135,27 +122,6 @@ export default {
 .houses_list {
 	cursor: pointer;
 }
-/* .houses_list li {
-	border: 2px solid black;
-	widows: 200px;
-} */
-/* .orders {
-	width: 45px;
-	height: 45px;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	border-radius: 50%;
-	transition: 0.3s;
-}
-.units {
-	width: 45px;
-	height: 45px;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	transition: 0.3s;
-} */
 
 .tokens {
 	display: flex;
