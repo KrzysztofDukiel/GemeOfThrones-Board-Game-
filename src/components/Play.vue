@@ -1,8 +1,8 @@
 
 
 <script setup>
-import axios from 'axios';
-import svgMap from "./svgMap.vue";
+
+import Map from './Map.vue';
 import { ref } from 'vue';
 let houses = ref(["Baratheon", "Lannister", "Stark", "Grejoy", "Tyller", "Martell", "Tully", "Arryn", "Targaryen"])
 
@@ -18,18 +18,11 @@ function changeHouseName() {
 </script>
 
 <template>
-	<svgMap/>
+	<h1>Good luck have fun</h1>
 	<div class="play">
-		<h1>Good luck have fun</h1>
-		<div class="map" @click="calculateDistance">
-
-			<img  src="../assets/SVGSize.svg" alt="" class="map_img" />
-			
-			
-			
-			
-		</div>
 		
+		<Map class="map" />
+	
 		<div class="game">
 			<div class="houses">
 				<h2>Chose your house</h2>
@@ -112,13 +105,9 @@ function changeHouseName() {
 
 <style>
 	
-
-.map img {
-	position: absolute;
-	scale: 0.6;
-	
+.play {
+	display: flex;
 }
-
 .houses_list {
 	cursor: pointer;
 }
