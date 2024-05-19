@@ -18,13 +18,10 @@ function changeHouseName() {
 </script>
 
 <template>
-	<h1>Good luck have fun</h1>
-	<div class="play">
-		
-		<Map class="map" />
+	<h1 class="play_title">Good luck have fun</h1>
 	
-		<div class="game">
-			<div class="houses">
+		<Map />
+		<div class="houses">
 				<h2>Chose your house</h2>
 				<ul class="houses_list"  >
 					
@@ -32,6 +29,8 @@ function changeHouseName() {
 					
 				</ul>
 			</div>
+		<div class="game">
+
 			<div>
 				<h2>Choose units</h2>
 				<ul>
@@ -100,18 +99,29 @@ function changeHouseName() {
 			<button @click="changeHouseName">sss</button>
 			<div class="house_cards"></div>
 		</div>
-	</div>
+	
 </template>
 
 <style>
-	
-.play {
-	display: flex;
-}
-.houses_list {
-	cursor: pointer;
+	.play_title {
+		margin-left: 30px;
+	}
+.game {
+	margin-left: 1600px;
 }
 
+.houses_list {
+	cursor: pointer;
+	display: flex;
+
+}
+.houses {
+	margin-left: 400px;
+}
+.houses_list li {
+	padding: 15px;
+	list-style: none;
+}
 .tokens {
 	display: flex;
 }
