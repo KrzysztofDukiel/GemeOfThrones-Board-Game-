@@ -4,63 +4,68 @@
 </script>
 
 <template>
-<div class="background_main">
-    <div class="container">
-        <div class="content">
-            <div class="content_info">
-                <h1>Welcome to my board game</h1>
-                <h2>What it is about</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo maxime unde qui error beatae mollitia sunt doloribus atque aspernatur cupiditate. Ea dolores possimus quam repellendus, eveniet sequi? Doloribus, a accusamus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur sint nostrum, nesciunt ipsum quo cupiditate vero laudantium fuga eius quae est maxime ratione nam sed nulla repudiandae consequuntur rerum fugiat, laborum commodi doloremque. Voluptatibus quam ullam provident dolor culpa pariatur.</p>
-                <button>show map</button>
-            </div>
-            <div>
-                <div class="content_rules">
-                    <h3>Rules</h3>
-                    
-                </div>
-                <div class="content_me">
-                    <h3>About me</h3>
-                    <p>I'm small programist who is trying to develop his skills and also create his favorite game with few chanages.</p>
-                </div>
-            </div>
-        </div>
+
+<section class="welcome vh-100">
+    <div class="welcome_background"></div>
+
+    <div class="welcome_container">
+        <h1>Welcome to my Board Game</h1>
+
+        <i>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio recusandae maxime ea repudiandae repellat eius nihil! Nesciunt, voluptates enim. Iusto similique omnis eum quis obcaecati architecto tenetur molestiae sapiente atque?
+        </i>
     </div>
-</div>
+</section>
+<section class="welcome vh-100">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </p>
+
+</section>
+
 </template>
 
-<style >
+<style lang="scss" scoped>
+.welcome {
+    position: relative;
+    color: white;
 
-.background_main {
-    background-image: url(../assets/denerys_on-thron.jpg);
-    margin-top: 0;
-    height: 800px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    &_background {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        height: 100%;
+        filter: brightness(0.55);
+        background-image: url(../assets/images/epic-throne.webp);
+		background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-}
-.content {
-    display: flex;
-    justify-content: space-evenly;
-    /* align-items: center; */
-    background-color: white;
-    opacity: .7;
-    padding-inline: 60px;
-    border-radius: 20px;
-}
- h1 {
-    color: black;
-}
-.content_info {
-    max-width: 400px;
-    margin: 20px 50px 0 0;
-}
-.content_me {
-    max-width: 200px;
-    margin-top: 40px;
+    &_container {
+        width: clamp(300px, 80%, 800px);
+        margin: 0 auto;
+        position: relative;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 </style>

@@ -195,3 +195,7 @@ body {
 	border: 30px solid black;	
 	fill: none;
 }
+
+h1 {
+	font-family: 'Sedan', serif;
+}
