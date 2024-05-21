@@ -5,12 +5,12 @@ import router from "./router/index"
 import { createStore } from 'vuex'
 import { io } from "socket.io-client";
 
-const socket = io("https://localhost:3000", {
-  withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
-  }
-});
+// const socket = io("https://localhost:3000", {
+//   withCredentials: true,
+//   extraHeaders: {
+//     "my-custom-header": "abcd"
+//   }
+// });
 const store = createStore({
     state () {
       return {

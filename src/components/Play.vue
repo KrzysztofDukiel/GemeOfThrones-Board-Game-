@@ -1,19 +1,26 @@
 
 
 <script setup>
-
 import Map from './Map.vue';
 import { ref } from 'vue';
+// import Houses from '../models/Houeses.js'
+
+
 let houses = ref(["Baratheon", "Lannister", "Stark", "Grejoy", "Tyller", "Martell", "Tully", "Arryn", "Targaryen"])
 
+function changeHouse(name, id) {
+	const house = [name, id]
+	console.log(house)
+	return house
+}
 
 const units = ref(["Footman", "Knight", "Sige tower", "Ship"])
-
-function changeHouseName() {
-	console.log(houses.value)
-	houses = ref(["bara", 'targ', "lanni"])
-	console.log(houses.value)
+function chooseUnit(unit, id) {
+	const chosenUnit = [unit, id]
+	console.log(chosenUnit)
+	return chosenUnit
 }
+
 
 </script>
 
@@ -25,7 +32,7 @@ function changeHouseName() {
 				<h2>Chose your house</h2>
 				<ul class="houses_list"  >
 					
-					<li v-for="house in houses" @click="chooseHouse()" >{{ house }}</li>
+					<li v-for="house in houses"  @click="changeHouse(house, houses.indexOf(house))" >{{ house }}</li>
 					
 				</ul>
 			</div>
@@ -34,7 +41,7 @@ function changeHouseName() {
 			<div>
 				<h2>Choose units</h2>
 				<ul>
-					<li v-for="unit in units">{{unit}}</li>
+					<li v-for="unit in units" @click="chooseUnit(unit, units.indexOf(unit))">{{unit}}</li>
 					
 				</ul>
 			</div>
@@ -96,7 +103,7 @@ function changeHouseName() {
 					</div>
 				</div>
 			</div>
-			<button @click="changeHouseName">sss</button>
+			
 			<div class="house_cards"></div>
 		</div>
 	
@@ -121,7 +128,11 @@ function changeHouseName() {
 .houses_list li {
 	padding: 15px;
 	list-style: none;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-inline: 10px;
 }
+
 .tokens {
 	display: flex;
 }
