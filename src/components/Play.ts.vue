@@ -1,14 +1,12 @@
 
 
-<script setup>
+<script lang="ts" setup>
 import Map from './Map.vue';
+import { HouseDefinitions } from '@/configuration/GameDefinitions.ts'
 import { ref } from 'vue';
-// import Houses from '../models/Houeses.js'
+import { House } from '@/models/Houese.ts'
 
-
-let houses = ref(["Baratheon", "Lannister", "Stark", "Grejoy", "Tyller", "Martell", "Tully", "Arryn", "Targaryen"])
-
-function changeHouse(name, id) {
+function changeHouse(name, id): House {
 	const house = [name, id]
 	console.log(house)
 	return house
@@ -21,10 +19,10 @@ function chooseUnit(unit, id) {
 	return chosenUnit
 }
 
-
 </script>
 
 <template>
+
 	<h1 class="play_title">Good luck have fun</h1>
 	
 		<Map />
@@ -32,7 +30,7 @@ function chooseUnit(unit, id) {
 				<h2>Chose your house</h2>
 				<ul class="houses_list"  >
 					
-					<li v-for="house in houses"  @click="changeHouse(house, houses.indexOf(house))" >{{ house }}</li>
+					<li v-for="house in HouseDefinitions"  @click="changeHouse(house.id)" >{{ house.houseName }}</li>
 					
 				</ul>
 			</div>

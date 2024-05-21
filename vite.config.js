@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       'sortablejs': 'sortablejs/modular/sortable.esm.js',
+      '@': '/src',
     },
   },
 })

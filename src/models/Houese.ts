@@ -1,4 +1,4 @@
-export class Houses {
+export class House {
     id = null
     houseName = null
 
