@@ -1,14 +1,14 @@
-export class Units {
+export class Unit {
     id = null
     unit = null
     strength = null
-    houseName = null
+    // houseName = null
     retreated = null // false or true 
-    constructor({id, unit, strength, houseName, retreated}) {
+    constructor({id, unit, strength,  retreated}) {
         this.id = id
         this.unit = unit
         this.strength =strength
-        this.houseName = houseName
+        // this.houseName = houseName
         this.retreated = retreated
     }
 }

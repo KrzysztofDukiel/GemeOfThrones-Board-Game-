@@ -4,7 +4,7 @@
 import Map from './Map.vue';
 import { HouseDefinitions } from '@/configuration/GameDefinitions.ts'
 import { ref } from 'vue';
-import { House } from '@/models/Houese.ts'
+import { House } from '@/models/House.ts'
 
 function changeHouse(name, id): House {
 	const house = [name, id]
@@ -30,7 +30,7 @@ function chooseUnit(unit, id) {
 				<h2>Chose your house</h2>
 				<ul class="houses_list"  >
 					
-					<li v-for="house in HouseDefinitions"  @click="changeHouse(house.id)" >{{ house.houseName }}</li>
+					<li v-for="house in HouseDefinitions"  @click="changeHouse(house.id, 1)" >{{ house.houseName }}</li>
 					
 				</ul>
 			</div>
@@ -44,7 +44,7 @@ function chooseUnit(unit, id) {
 				</ul>
 			</div>
 			<h2>Orders</h2>
-			<div class="tokens">
+			<!-- <div class="tokens">
 				<div class="attacks">
 					<div @click="chosenElementFunc(' at-1', 'orders')">
 						<img src="../assets/orders/at-1.webp" alt="" />
@@ -101,7 +101,7 @@ function chooseUnit(unit, id) {
 					</div>
 				</div>
 			</div>
-			
+			 -->
 			<div class="house_cards"></div>
 		</div>
 	

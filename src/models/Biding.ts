@@ -1,6 +1,6 @@
 export class Biding {
-    id = null
-    bidingValue = null
+    id: number = 0 
+    bidingValue: string = "null"
     houseName = null
     constructor({id, bidingValue, houseName}) {
         this.id = id

@@ -1,13 +1,14 @@
-export class Orders {
+export class Order {
     id = null
     order = null
     type = null
-    houseName = null
-    constructor({id, order, type, houseName}) {
+    
+    // houseName = null
+    constructor({id, order, type}) {
         this.id = id
         this.order = order
         this.type = type
-        this.houseName = houseName
+        // this.houseName = houseName
     }
 
 }

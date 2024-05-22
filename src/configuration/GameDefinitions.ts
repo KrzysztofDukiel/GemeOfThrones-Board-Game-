@@ -1,4 +1,4 @@
-import { House } from "../models/Houese";
+import { House } from "../models/House";
 
 export const HouseDefinitions = [
     new House({id: 1, houseName: "Baratheon"}),
