@@ -44,10 +44,11 @@ export default {
 }
 .houses_list li {
 	padding: 15px;
-	list-style: none;
 	border: 2px solid black;
 	border-radius: 10px;
 	margin-inline: 10px;
 }
-
+li {
+	list-style: none;
+}
 </style>

@@ -385,7 +385,7 @@
 .svgMap {
 	margin: 0;
 	position: absolute;
-	left: -400px;
+	left: -150px;
     top: -400px;
 }
 .map_img {

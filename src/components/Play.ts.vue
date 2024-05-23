@@ -2,28 +2,28 @@
 
 <script lang="ts" setup>
 import Map from './Map.vue';
-import { HouseDefinitions } from '@/configuration/GameDefinitions.ts'
-import { ref } from 'vue';
-import { House } from '@/models/House.ts'
+// import { HouseDefinitions } from '@/configuration/GameDefinitions.ts'
+// import { ref } from 'vue';
+// import { House } from '@/models/House.ts'
 
-function changeHouse(name, id): House {
-	const house = [name, id]
-	console.log(house)
-	return house
-}
+// function changeHouse(name, id): House {
+// 	const house = [name, id]
+// 	console.log(house)
+// 	return house
+// }
 
-const units = ref(["Footman", "Knight", "Sige tower", "Ship"])
-function chooseUnit(unit, id) {
-	const chosenUnit = [unit, id]
-	console.log(chosenUnit)
-	return chosenUnit
-}
+// const units = ref(["Footman", "Knight", "Sige tower", "Ship"])
+// function chooseUnit(unit, id) {
+// 	const chosenUnit = [unit, id]
+// 	console.log(chosenUnit)
+// 	return chosenUnit
+// }
 
 </script>
 
 <template>
 
-	<h1 class="play_title">Good luck have fun</h1>
+	<!-- <h1 class="play_title">Good luck have fun</h1>
 	
 		<Map />
 		<div class="houses">
@@ -43,7 +43,7 @@ function chooseUnit(unit, id) {
 					
 				</ul>
 			</div>
-			<h2>Orders</h2>
+			<h2>Orders</h2> -->
 			<!-- <div class="tokens">
 				<div class="attacks">
 					<div @click="chosenElementFunc(' at-1', 'orders')">
@@ -102,8 +102,8 @@ function chooseUnit(unit, id) {
 				</div>
 			</div>
 			 -->
-			<div class="house_cards"></div>
-		</div>
+			<!-- <div class="house_cards"></div>
+		</div> -->
 	
 </template>
 
