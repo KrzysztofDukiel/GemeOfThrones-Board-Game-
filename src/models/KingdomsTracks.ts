@@ -1,7 +1,7 @@
 export class KingdomsTracks {
     id = null
     trackName = null
-    trackPosition = null
+    trackPosition: string
     houseName = null
     constructor({id, trackName, houseName, trackPosition}) {
         this.id = id

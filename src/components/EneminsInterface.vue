@@ -15,6 +15,7 @@ export default {
 <template>
 	<div class="enemis">
 		<h3 v-for="house in houseDefinitions"> {{ house.houseName }}</h3>
+		<p>name</p>
 	</div>
 </template>
 
