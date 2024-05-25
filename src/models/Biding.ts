@@ -1,7 +1,9 @@
+import { EnumHouse } from "../enums/EnumHouse"
+
 export class Biding {
-    id: number = 0 
-    bidingValue: string = "null"
-    houseName = null
+    id: number
+    bidingValue: string
+    houseName: EnumHouse
     constructor({id, bidingValue, houseName}) {
         this.id = id
         this.bidingValue = bidingValue

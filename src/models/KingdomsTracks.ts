@@ -1,8 +1,10 @@
+import { EnumHouse } from "../enums/EnumHouse"
+
 export class KingdomsTracks {
-    id = null
-    trackName = null
+    id: number
+    trackName:string
     trackPosition: string
-    houseName = null
+    houseName:EnumHouse
     constructor({id, trackName, houseName, trackPosition}) {
         this.id = id
         this.trackName = trackName

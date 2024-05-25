@@ -1,6 +1,6 @@
 export class PowerTokens {
-    id = null
-    numberOfPowerTokens = null
+    id:number
+    numberOfPowerTokens:number
     constructor({id, numberOfPowerTokens}) {
         this.id = id
         this.numberOfPowerTokens = numberOfPowerTokens

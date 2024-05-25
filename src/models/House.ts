@@ -1,6 +1,8 @@
+import { EnumHouse } from "../enums/EnumHouse"
+
 export class House {
-    id = null
-    houseName = null
+    id:string
+    houseName: EnumHouse
 
     constructor({id, houseName}) {
         this.id = id

@@ -1,7 +1,7 @@
 export class WildlingsCards {
-    id = null
-    wildlingsCard = null
-    effect = null
+    id: number
+    wildlingsCard: string
+    effect:string
     constructor({id, wildlingsCard, effect}) {
         this.id = id
         this.wildlingsCard = wildlingsCard

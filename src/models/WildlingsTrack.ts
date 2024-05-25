@@ -1,6 +1,6 @@
 export class WildlingsTrack {
-    id = null 
-    wildlingsStrength = null 
+    id:string
+    wildlingsStrength:string
     
     constructor({id, wildlingsStrength}) {
         this.id = id

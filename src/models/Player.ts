@@ -1,7 +1,7 @@
 export class Player {
-    id = null;
-    name = null;
-    score = 0;
+    id: number
+    name: string
+    score:number
 
     constructor({ id, name}) {
         this.id = id;

@@ -1,9 +1,9 @@
 export class Unit {
-    id = null
-    unit = null
-    strength = null
+    id:number
+    unit:string
+    strength:number
     // houseName = null
-    retreated = null // false or true 
+    retreated:boolean
     constructor({id, unit, strength,  retreated}) {
         this.id = id
         this.unit = unit

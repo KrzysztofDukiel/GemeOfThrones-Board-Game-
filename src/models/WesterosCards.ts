@@ -1,8 +1,8 @@
 export class WesterosCards {
-    id = null
-    cardName = null
-    cardNumber = null
-    wildlings = null
+    id:number
+    cardName: string
+    cardNumber: number
+    wildlings:string
     constructor({id, cardName, cardNumber, wildlings}) {
         this.id = id
         this.cardName = cardName
