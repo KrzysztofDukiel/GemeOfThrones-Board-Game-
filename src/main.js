@@ -4,22 +4,38 @@ import App from './App.vue'
 import router from "./router/index"
 import { createStore } from 'vuex'
 import { io } from "socket.io-client";
+import { CommanderDefinitions } from './configuration/CommanderDefinitions'
 
-// const socket = io("https://localhost:3000", {
-//   withCredentials: true,
-//   extraHeaders: {
-//     "my-custom-header": "abcd"
-//   }
-// });
+
 const store = createStore({
     state () {
       return {
-        count: 0
+       house: "",
+       units: [],
+       orders: [],
+       commanders: [],
+
+       
       }
     },
     mutations: {
-      increment (state) {
-        state.count++
+      chooseHouse(house) {
+        this.commanders = []
+        this.house = house
+        for(let com in CommanderDefinitions) {
+          if(CommanderDefinitions[com].houseName == house) {
+            this.commanders.push(CommanderDefinitions.value[com])
+          }
+        }
+      },
+      addUnit(unitInfo) {
+        this.unit.push(unitInfo)
+      },
+      addOrder(orderInfo) {
+        this.orders.push(orderInfo)
+      },
+      commandersInfo() {
+        
       }
     }
   })

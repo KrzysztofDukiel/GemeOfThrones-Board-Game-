@@ -1,33 +1,52 @@
 <script>
-import {UnitDefinitions} from "@/configuration/UnitDefinitions"
-import {CommanderDefinitions} from "@/configuration/CommanderDefinitions"
-export default {
-	components: {},
-	setup() {
-        const unitDefinitions = UnitDefinitions
-		const commanderDefinitions = CommanderDefinitions
-		return {
-            unitDefinitions,
-			commanderDefinitions
-        };
-	},
-    methods: {
-     chooseUnit(unit, id) {
-	const chosenUnit = [unit, id]
-	console.log(chosenUnit)
-	return chosenUnit
-}
+import { ref } from 'vue';
+import { UnitDefinitions } from '@/configuration/UnitDefinitions';
+import { CommanderDefinitions } from '@/configuration/CommanderDefinitions';
 
-    }
+export default {
+  components: {},
+  setup() {
+    const unitDefinitions = ref(UnitDefinitions);
+    const commanderDefinitions = ref(CommanderDefinitions);
+
+    const chooseUnit = (unit) => {
+      const chosenUnit = unit;
+      console.log(chosenUnit);
+      return chosenUnit;
+    };
+
+	const houseCommandersArr = ref([])
+    const commanders = () => {
+		const dcoy = "BARATHEON"
+		
+	  for(let com in commanderDefinitions.value) {
+		  if(commanderDefinitions.value[com].houseName == dcoy) {
+			
+			houseCommandersArr.value.push(commanderDefinitions.value[com].houseName)
+		}
+		
+	  }
+    };
+
+    return {
+      unitDefinitions,
+      commanderDefinitions,
+      chooseUnit,
+      commanders,
+	  houseCommandersArr
+    };
+  },
 };
 </script>
 <template>
 	<div class="interface">
 		<h2>Bartheon</h2>
 		<div class="commanders">
-			<h3>Commanders</h3>
+			<h3 @click="commanders()" >Commanders</h3>
 			<ul>
-				<li v-for="commander in commanderDefinitions"> {{ commander.commander }}</li>
+				<li v-for="commander in houseCommandersArr">
+					{{ commander }}
+				</li>
 			</ul>
 		</div>
 		<div class="units">
@@ -35,7 +54,7 @@ export default {
 			<ul>
 				<li
 					v-for="unit in unitDefinitions"
-					@click="chooseUnit(unit, units.indexOf(unit))">
+					@click="chooseUnit(unit.unit)">
 					{{ unit.unit }}
 				</li>
 			</ul>

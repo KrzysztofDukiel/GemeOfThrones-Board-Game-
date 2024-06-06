@@ -381,14 +381,7 @@
 </template>
 
 <script setup>
-// const regions = [
-// 	{
-// 		name: "nameRegion",
-// 		svg: {
-// 			path:
-// 		}
-// 	}
-// ]
+
 </script>
 
 <style>
