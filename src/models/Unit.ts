@@ -2,13 +2,13 @@ export class Unit {
     id:number
     unit:string
     strength:number
-    // houseName = null
+    houseName: string
     retreated:boolean
-    constructor({id, unit, strength,  retreated}) {
+    constructor({id, unit, strength,  retreated, houseName}) {
         this.id = id
         this.unit = unit
         this.strength =strength
-        // this.houseName = houseName
+        this.houseName = houseName
         this.retreated = retreated
     }
 }
