@@ -7,18 +7,26 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
     state () {
       return {
        house: "Choose house",
-       units: UnitDefinitions.value,
-       orders: OrderDefinitons.value,
-       commanders: [],
-       allComanders: CommanderDefinitions.value,
+       units: UnitDefinitions,
+       orders: OrderDefinitons,
+       allComanders: CommanderDefinitions,
+       comanders: [],
 
        
       }
     },
     mutations: {
       chooseHouse(state, payload) {
-        console.log(payload, state)
+    
         state.house = payload
+        state.comanders = []
+      
+        for(let com in state.allComanders) {
+          
+          if(state.allComanders[com].houseName == payload) {
+            state.comanders.push(state.allComanders[com])
+          }
+        }
       },
       addUnit(state, payload) {
         state.unit.push( payload)
@@ -33,14 +41,11 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
       }
     },
     getters: {
-      changeGenerals(state, payload) {
-        state.commanders = []
-        for(let com in state.allComanders) {
-          if(state.allComanders[com].houseName == state.house) {
-            state.commanders.push(state.allComanders[com])
-          }
-        }
-        
+      
+    },
+    actions: {
+      updateHouse({ commit }, house) {
+        commit('setHouse', house); 
       }
     }
   })

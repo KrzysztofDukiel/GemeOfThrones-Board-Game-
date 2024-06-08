@@ -1,23 +1,19 @@
 <script>
 import { HouseDefinitions } from '@/configuration/GameDefinitions';
-import { reactive } from 'vue';
-import store from '../store/Store';
+import { computed, reactive, ref } from 'vue';
+import { useStore } from 'vuex';
 
 
 export default {
   setup() {
     const houseDefinitions = reactive(HouseDefinitions);
 	
-    const chooseHouse = (name) => {
-		console.log(name.houseName)
-		store.commit('chooseHouse', name.houseName)
-      
-		
-    };
+	const store = useStore();
 
     return {
       houseDefinitions,
-      chooseHouse,
+   
+
     };
   },
 };
@@ -25,11 +21,11 @@ export default {
 
 <template>
 	<div class="houses">
-		<h2></h2>
+		<h2> {{ $store.state.house }}</h2>
 		<ul class="houses_list">
 			<li
 				v-for="house in houseDefinitions"
-				@click="chooseHouse(house)">
+				@click="$store.commit('chooseHouse', house.houseName)">
 				{{ house.houseName }}
 			</li>
 		</ul>

@@ -15,44 +15,36 @@ export default {
       return chosenUnit;
     };
 
-	const houseCommandersArr = ref([])
-    const commanders = () => {
-		const dcoy = "BARATHEON"
-		
-	  for(let com in commanderDefinitions.value) {
-		  if(commanderDefinitions.value[com].houseName == dcoy) {
-			
-			houseCommandersArr.value.push(commanderDefinitions.value[com].houseName)
-		}
-		
-	  }
-    };
-
     return {
       unitDefinitions,
       commanderDefinitions,
       chooseUnit,
-      commanders,
-	  houseCommandersArr
+      
+	  
     };
   },
 };
 </script>
 <template>
 	<div class="interface">
-		<h2>Bartheon</h2>
+		<h2>{{ $store.state.house }}</h2>
 		<div class="commanders">
-			<h3 @click="commanders()" >Commanders</h3>
+			<h3>Comanders</h3>
 			<ul>
-				<li v-for="commander in houseCommandersArr">
-					{{ commander }}
+				<li v-for=" com in $store.state.comanders" >
+					<!-- lista generałow  -->
+					 {{ com.houseName }}
+					 {{ com.commander }}
+					 {{ com.strength }}
 				</li>
 			</ul>
 		</div>
 		<div class="units">
 			<h3>Units</h3>
 			<ul>
+				<!-- naprawic odziały -->
 				<li
+				
 					v-for="unit in unitDefinitions"
 					@click="chooseUnit(unit.unit)">
 					{{ unit.unit }}
