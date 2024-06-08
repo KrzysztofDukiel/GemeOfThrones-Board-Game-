@@ -1,8 +1,10 @@
 export class PowerTokens {
     id:number
     numberOfPowerTokens:number
-    constructor({id, numberOfPowerTokens}) {
+    houseName: string
+    constructor({id, numberOfPowerTokens, houseName}) {
         this.id = id
         this.numberOfPowerTokens = numberOfPowerTokens
+        this.houseName = houseName
     }
 }

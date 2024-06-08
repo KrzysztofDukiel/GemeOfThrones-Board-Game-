@@ -45,9 +45,10 @@ export default {
 				<!-- naprawic odziały -->
 				<li
 				
-					v-for="unit in unitDefinitions"
+					v-for="unit in $store.state.uni"
 					@click="chooseUnit(unit.unit)">
 					{{ unit.unit }}
+					{{ unit.houseName }}
 				</li>
 			</ul>
 		</div>

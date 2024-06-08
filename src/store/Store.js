@@ -11,7 +11,7 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
        orders: OrderDefinitons,
        allComanders: CommanderDefinitions,
        comanders: [],
-
+        uni: [],
        
       }
     },
@@ -20,11 +20,18 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
     
         state.house = payload
         state.comanders = []
+        state.uni = []
       
-        for(let com in state.allComanders) {
+        for(let com of state.allComanders) {
           
-          if(state.allComanders[com].houseName == payload) {
-            state.comanders.push(state.allComanders[com])
+          if(com.houseName == payload) {
+            state.comanders.push(com)
+          }
+        }
+        for(let unit of state.units) {
+          if(unit.houseName == payload) {
+
+            state.uni.push(unit)
           }
         }
       },
