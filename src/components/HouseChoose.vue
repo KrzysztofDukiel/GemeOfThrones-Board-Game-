@@ -21,7 +21,7 @@ export default {
 
 <template>
 	<div class="houses">
-		<h2> {{ $store.state.house }}</h2>
+		<h2> Choose House</h2>
 		<ul class="houses_list">
 			<li
 				v-for="house in houseDefinitions"
@@ -33,20 +33,33 @@ export default {
 </template>
 
 <style>
+.houses {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 20px;
+	background-image: url('../assets/battle.jpg');
+	background-position: 50% 68%;
+	width: 1500px;
+	height: 150px;
+	margin: 20px;
+}
 .houses_list {
 	cursor: pointer;
 	display: flex;
 }
-.houses {
-	margin-left: 400px;
-}
+
 .houses_list li {
 	padding: 15px;
-	border: 2px solid black;
+	border: 2px solid white;
 	border-radius: 10px;
 	margin-inline: 10px;
 }
-li {
-	list-style: none;
+
+.houses_list li:hover {
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 </style>

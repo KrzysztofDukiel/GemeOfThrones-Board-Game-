@@ -1,6 +1,6 @@
 <template>
 	<div class="svgMap">
-		<img  src="../assets/9map.png" alt="" class="map_img" />
+		<img  src="../assets/maps/9map.png" alt="" class="map_img" />
 		  <svg
 			  class="svg1"
 			  width="3218"

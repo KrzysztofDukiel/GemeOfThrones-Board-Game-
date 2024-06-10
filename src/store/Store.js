@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import { CommanderDefinitions } from '../configuration/CommanderDefinitions'
 import { OrderDefinitons } from '../configuration/OrderDefinitions'
 import { UnitDefinitions } from '../configuration/UnitDefinitions'
+import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
 
  const store = createStore({
     state () {
@@ -10,29 +11,30 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
        units: UnitDefinitions,
        orders: OrderDefinitons,
        allComanders: CommanderDefinitions,
-       comanders: [],
-        uni: [],
-       
+       commanders: [],
+       tracks: [],
+       powerTokens: PowerTokensDefinitions,
+       housePowerTokens: 0
+
       }
     },
     mutations: {
       chooseHouse(state, payload) {
-    
-        state.house = payload
-        state.comanders = []
-        state.uni = []
-      
-        for(let com of state.allComanders) {
+        
+        if(state.house !== payload) {
+          state.house = payload
+          state.commanders = []
+          for(let com of state.allComanders) {
+            if(com.houseName == payload) {
+              state.commanders.push(com)
+            }
+          }
+          for(let power of state.powerTokens) {
+            if(power.houseName === payload) {
+              state.housePowerTokens = power.numberOfPowerTokens
+            }
+          }
           
-          if(com.houseName == payload) {
-            state.comanders.push(com)
-          }
-        }
-        for(let unit of state.units) {
-          if(unit.houseName == payload) {
-
-            state.uni.push(unit)
-          }
         }
       },
       addUnit(state, payload) {
@@ -45,6 +47,25 @@ import { UnitDefinitions } from '../configuration/UnitDefinitions'
         state.commanders.array.forEach(element => {
           if(element.commander == payload) return element.used = true
         });
+      },
+      incrementPowerTokens(state) {
+        state.housePowerTokens++
+        for(let housePT of state.powerTokens) {
+          if(housePT.houseName == state.house) {
+            housePT.numberOfPowerTokens = state.housePowerTokens
+
+          }
+        }
+      },
+      decrementPowerTokens(state) {
+        state.housePowerTokens--
+        for(let housePT of state.powerTokens) {
+          if(housePT.houseName == state.house) {
+            housePT.numberOfPowerTokens = state.housePowerTokens
+           
+          }
+        }
+
       }
     },
     getters: {
