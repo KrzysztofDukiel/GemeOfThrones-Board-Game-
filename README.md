@@ -1,7 +1,7 @@
 ### Gra o tron 
 ## Projekt gry planszowej dla 9 graczy 
 
-# Atkywacja projektu 
+# Aktywacja projektu 
  
  npm i
 
