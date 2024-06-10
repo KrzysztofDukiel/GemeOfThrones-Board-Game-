@@ -70,7 +70,6 @@ export default {
 	margin-top: 50px;
 }
 .interface li {
-	
 	cursor: pointer;
 }
 .commanders_list  {
@@ -80,7 +79,7 @@ export default {
 .commanders_list img {
 	width: 35px;
 	height: 50px;
-
+	
 }
 .commanders_list img:hover {
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);

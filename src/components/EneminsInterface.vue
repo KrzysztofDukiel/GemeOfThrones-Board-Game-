@@ -49,6 +49,7 @@ export default {
 .enemis img {
 	width: 35px;
 	height: 50px;
+
 }
 
 </style>
