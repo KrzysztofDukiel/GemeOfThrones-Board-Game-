@@ -9,9 +9,11 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
       return {
        house: "Choose house",
        units: UnitDefinitions,
+       houseUnits: [],
        orders: OrderDefinitons,
+       houseOrders: [],
        allComanders: CommanderDefinitions,
-       commanders: [],
+       houseCommanders: [],
        tracks: [],
        powerTokens: PowerTokensDefinitions,
        housePowerTokens: 0
@@ -23,10 +25,10 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
         
         if(state.house !== payload) {
           state.house = payload
-          state.commanders = []
+          state.houseCommanders = []
           for(let com of state.allComanders) {
             if(com.houseName == payload) {
-              state.commanders.push(com)
+              state.houseCommanders.push(com)
             }
           }
           for(let power of state.powerTokens) {
@@ -34,17 +36,22 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
               state.housePowerTokens = power.numberOfPowerTokens
             }
           }
+          for(let order of state.orders) {
+            if(order.houseName == payload) {
+              state.houseOrders.push(order)
+            }
+          }
           
         }
       },
       addUnit(state, payload) {
-        state.unit.push( payload)
+        state.houseUnits.push( payload)
       },
       addOrder(state, payload) {
-        state.orders.push( payload)
+        state.houseOrders.push( payload)
       },
       commandersStatus(state, payload) {
-        state.commanders.array.forEach(element => {
+        state.houseCommanders.array.forEach(element => {
           if(element.commander == payload) return element.used = true
         });
       },
