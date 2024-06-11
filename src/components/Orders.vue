@@ -1,19 +1,20 @@
 <script>
-import { OrderDefinitions } from '@/configuration/OrderDefinitions';
+import { OrderDefinitons } from '@/configuration/OrderDefinitions';
 export default {
 	components: {},
 	setup() {
-		const orderDefinitions = OrderDefinitions;
+		const orderDefinitions = OrderDefinitons;
 		return {
-			OrderDefinitions,
+			OrderDefinitons,
 		};
 	},
 };
 </script>
 <template>
 	<div class="orders">
+		<h2>Orders</h2>
 		<ul>
-			<li v-for="order in OrderDefinitions">{{ order.order }}</li>
+			<li v-for="order in OrderDefinitons">{{ order.order }}</li>
 		</ul>
 	</div>
 </template>
@@ -21,7 +22,7 @@ export default {
 <style>
 .orders	 {
 	widows: 300px;
-
+	z-index: 100;
 }
 .orders ul {
 	display: flex;

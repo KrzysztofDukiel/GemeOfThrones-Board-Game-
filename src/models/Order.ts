@@ -3,12 +3,12 @@ import { EnumHouse } from "../enums/EnumHouse"
 export class Order {
     id:number
     order :string
-    type:string
+    special:boolean
     houseName: EnumHouse
-    constructor({id, order, type, houseName }) {
+    constructor({id, order, special, houseName }) {
         this.id = id
         this.order = order
-        this.type = type
+        this.special = special
         this.houseName = houseName
     }
 

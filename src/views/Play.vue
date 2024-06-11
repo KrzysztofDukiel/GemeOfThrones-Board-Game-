@@ -4,6 +4,7 @@ import Map from '../components/Map.vue';
 import HouseChoose from "../components/HouseChoose.vue";
 import PlayerInterface from "../components/PlayerInterface.vue";
 import EneminsInterface from "../components/EneminsInterface.vue";
+import Orders from "../components/Orders.vue"
 import { PlayManager } from "@/mods/PlayManager";
 import { reactive } from "vue";
 
@@ -13,7 +14,8 @@ export default {
 		Map,
 		HouseChoose,
 		PlayerInterface,
-		EneminsInterface
+		EneminsInterface,
+		Orders
 	},
 	setup() {
 	  const playManager = reactive(new PlayManager());
@@ -29,7 +31,8 @@ export default {
 	<HouseChoose/>
 	<PlayerInterface/>
 	<EneminsInterface/>
-		<Map></Map>
+	<Map></Map>
+	<Orders/>
 </template>
 
 <style scoped></style>
