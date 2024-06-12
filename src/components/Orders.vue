@@ -1,20 +1,31 @@
 <script>
 import { OrderDefinitons } from '@/configuration/OrderDefinitions';
+import { useStore } from 'vuex';
 export default {
 	components: {},
 	setup() {
+		const store = useStore
 		const orderDefinitions = OrderDefinitons;
+		const putOrdersBox = ()=> {
+			const orderBox = document.querySelector(".orders")
+			console.log(store.state.ordersBox)
+			orderBox.style.left = store.state.ordersBox[0]
+			orderBox.style.top = store.state.ordersBox[1]
+
+		}
 		return {
-			OrderDefinitons,
+			orderDefinitions,
+			putOrdersBox
 		};
 	},
 };
 </script>
 <template>
+	<button @click="putOrdersBox()" >klik</button>
 	<div class="orders">
 		
 		<ul>
-			<li  class="order at1" >  </li>
+			<li  class="order at1" ></li>
 			<li  class="order at0" ></li>
 			<li  class="order atm1" ></li>
 			<li  class="order def2" ></li>
@@ -38,6 +49,7 @@ export default {
 .orders	 {
 	width: 240px;
 	border: 3px solid black;
+	position: absolute;
 	
 }
 .orders ul {

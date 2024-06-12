@@ -1,5 +1,4 @@
 <script>
-import { ref } from 'vue';
 
 
 export default {
@@ -25,7 +24,7 @@ export default {
 		<div class="commanders">
 			<h3>Comanders</h3>
 			<ul class="commanders_list" >
-				<li v-for=" commander in $store.state.commanders"  >
+				<li v-for=" commander in $store.state.houseCommanders"  >
 					
 					<img v-if="!commander.used" src="../assets/Commanders/BARATHEON/BARATHEON6.png" alt="">
 					<img v-if="commander.used" src="../assets/Commanders/Baratheon/BARATHEON.png" alt="">

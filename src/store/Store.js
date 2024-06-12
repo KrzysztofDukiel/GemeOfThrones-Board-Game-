@@ -11,6 +11,7 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
        units: UnitDefinitions,
        houseUnits: [],
        orders: OrderDefinitons,
+       ordersBox: [],
        houseOrders: [],
        allComanders: CommanderDefinitions,
        houseCommanders: [],
@@ -72,8 +73,12 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
            
           }
         }
-
+      },
+      ordersBoxPosition(state, postion) {
+        state.ordersBox = postion
+        console.log(state.ordersBox)
       }
+
     },
     getters: {
       
