@@ -386,14 +386,14 @@ export default {
 		const store = useStore()
 		const getOrdersBoxPosition = (event)=> {
 			const mapArea = event.currentTarget.getBoundingClientRect();
-      		const x = event.clientX - mapArea.left;
-      		const y = event.clientY - mapArea.top;
+      		const x = event.clientX - (mapArea.left - 100);
+      		const y = event.clientY - (mapArea.top - 80);
 			  const arrayPostion = [Math.floor(x), Math.floor(y)]
-			  console.log(arrayPostion)
+			
 			store.commit("ordersBoxPosition", arrayPostion)
 		};
 	return {
-		store,
+		// store,
 		getOrdersBoxPosition,
 	}
 	},

@@ -4,18 +4,19 @@ import { useStore } from 'vuex';
 export default {
 	components: {},
 	setup() {
-		const store = useStore
+		const store = useStore()
 		const orderDefinitions = OrderDefinitons;
 		const putOrdersBox = ()=> {
 			const orderBox = document.querySelector(".orders")
-			console.log(store.state.ordersBox)
-			orderBox.style.left = store.state.ordersBox[0]
-			orderBox.style.top = store.state.ordersBox[1]
+			console.log(store.state.ordersBox[0])
+			orderBox.style.left = store.state.ordersBox[0] + "px"
+			orderBox.style.top = store.state.ordersBox[1] + "px"
 
 		}
 		return {
 			orderDefinitions,
-			putOrdersBox
+			putOrdersBox,
+			store
 		};
 	},
 };
@@ -50,6 +51,8 @@ export default {
 	width: 240px;
 	border: 3px solid black;
 	position: absolute;
+	background-color: white;
+	z-index: 200;
 	
 }
 .orders ul {

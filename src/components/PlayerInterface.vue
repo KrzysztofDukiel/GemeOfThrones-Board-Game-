@@ -33,19 +33,20 @@ export default {
 		</div>
 		<div class="units">
 			<h3>Units</h3>
-			<ul>
+			<ul class="units_list">
 				<!-- naprawic odziały -->
 				<li @click="chooseUnit('footman')">
-					Footman
+					<img src="../assets/SVGunits/Vector 99.svg" alt="">
 				</li>
 				<li @click="chooseUnit('ship')">
-					Ship
+					<img src="../assets/SVGunits/Vector 102.svg" alt="">
 				</li>
 				<li @click="chooseUnit('knight')">
-					Knight
+					<img src="../assets/SVGunits/Vector 100.svg" alt="">
+					
 				</li>
 				<li @click="chooseUnit('tower')">
-					Sige Tower
+					<img src="../assets/SVGunits/Vector 101.svg" alt="">
 				</li>
 			</ul>
 		</div>
@@ -91,5 +92,14 @@ export default {
   	cursor: pointer;
 	height: 20px;
 	margin: 10px;
+}
+.units_list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.units_list img {
+	width: 40px;
+	height: 40px;
+	margin-inline: 10px;
 }
 </style>

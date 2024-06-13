@@ -76,7 +76,7 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
       },
       ordersBoxPosition(state, postion) {
         state.ordersBox = postion
-        console.log(state.ordersBox)
+        
       }
 
     },
