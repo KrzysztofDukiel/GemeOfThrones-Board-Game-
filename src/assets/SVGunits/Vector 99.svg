@@ -1,3 +1,8 @@
-<svg width="69" height="71" viewBox="0 0 69 71" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M68 69.6964H1V61.1964C7.4 45.5964 19.6667 36.6964 25 34.1964C14.2 19.7964 20.5 8.86304 25 5.19635C33 -2.40365 41.6667 2.02969 45 5.19635C56.2 15.1964 49.6667 28.6964 45 34.1964C51 34.1964 62.8333 52.1964 68 61.1964V69.6964Z" stroke="black"/>
-</svg>
+<svg width="69" height="71" viewBox="0 0 69 71" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="img-pattern" patternUnits="userSpaceOnUse" width="69" height="71">
+        <image href="src/assets/unitsColor/ARRYN.png" x="0" y="0" width="69" height="71"/>
+      </pattern>
+    </defs>
+    <path d="M68 69.6964H1V61.1964C7.4 45.5964 19.6667 36.6964 25 34.1964C14.2 19.7964 20.5 8.86304 25 5.19635C33 -2.40365 41.6667 2.02969 45 5.19635C56.2 15.1964 49.6667 28.6964 45 34.1964C51 34.1964 62.8333 52.1964 68 61.1964V69.6964Z" fill="gray" stroke="black"/>
+  </svg>

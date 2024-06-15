@@ -1,26 +1,51 @@
 <script>
-import { HouseDefinitions } from '@/configuration/GameDefinitions';
+import { watch } from 'vue';
 import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions';
+import { useStore } from 'vuex';
+
 export default {
 	components: {},
 	setup() {
+		const store = useStore();
 		const powerTokensDefinitions = PowerTokensDefinitions;
+
+		watch(
+			() => store.state.allComanders,
+			() => {},
+			{ deep: true }
+		);
+		const zoomIn = (commander) => {
+			// console.log(commander)
+			const zoomDiv = document.querySelector(".zoom")
+			// zoomDiv.style.backgroundImage = url("src/assets/Commanders/BARATHEON/BARATHEON.png")
+			zoomDiv.style.display = "block"
+		}
+		const zoomOut = () => {
+			const zoomDiv = document.querySelector(".zoom")
+			zoomDiv.style.display = "none"
+			
+		}
 		return {
 			powerTokensDefinitions,
+			store,
+			zoomIn,
+			zoomOut
 		};
 	},
 };
 </script>
 <template>
-	<!-- v-if="$store.state.house !== house.houseName" -->
-	<div v-for="house in powerTokensDefinitions">
+	
+	<div v-for="house in $store.state.powerTokens">
 		<div class="enemis" v-if="$store.state.house !== house.houseName">
 			<h3>{{ house.houseName }}</h3>
 			<ul
 				class="enemis_commanders"
 				v-for="commander in $store.state.allComanders">
 				<li v-if="commander.houseName == house.houseName">
-					<img src="../assets/Commanders/LANNISTER/LANNISTER.png" alt="" />
+					<div class="zoom" :id="commander"  ></div>
+					<img v-if="!commander.used" @mouseover="zoomIn(commander.commander)" @mouseout="zoomOut()" :src="commander.commander" alt="" />
+					<img v-if="commander.used" @mouseover="zoomIn(commander.commander)"  @mouseout="zoomOut()" :src="commander.background" alt="" />
 				</li>
 			</ul>
 			<h3>Power tokens: {{ house.numberOfPowerTokens }}</h3>
@@ -46,10 +71,19 @@ export default {
 .enemis_commanders img:hover {
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
-.enemis img {
+.enemis_commanders img {
 	width: 35px;
 	height: 50px;
-
 }
-
+.zoom {
+	display: none;
+	position: absolute;
+	width: 200px;
+	height: 300px;
+	border: 2px solid black;
+	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 </style>
