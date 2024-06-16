@@ -21,7 +21,7 @@ export default {
 
 <template>
 	<div class="houses">
-		<h2> Choose House</h2>
+		<h1> Choose House</h1>
 		<ul class="houses_list">
 			<li
 				v-for="house in houseDefinitions"
@@ -47,6 +47,9 @@ export default {
 	height: 150px;
 	margin: 20px;
 }
+.houses h1 {
+	color: white;
+}
 .houses_list {
 	cursor: pointer;
 	display: flex;
@@ -57,9 +60,10 @@ export default {
 	border: 2px solid white;
 	border-radius: 10px;
 	margin-inline: 10px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .houses_list li:hover {
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
 </style>

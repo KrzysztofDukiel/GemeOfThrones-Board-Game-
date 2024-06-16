@@ -20,14 +20,13 @@ export default {
 			}
 		};
 		const zoomIn = () => {
-			// console.log(commander)
 			const zoomDiv = document.querySelector('.zoomPlayerInt');
 			// zoomDiv.style.backgroundImage = url("src/assets/Commanders/BARATHEON/BARATHEON.png")
-			zoomDiv.style.display = 'block';
+			// zoomDiv.style.display = 'block';
 		};
 		const zoomOut = () => {
 			const zoomDiv = document.querySelector('.zoomPlayerInt');
-			zoomDiv.style.display = 'none';
+			// zoomDiv.style.display = 'none';
 		};
 		return {
 			chooseUnit,
@@ -41,12 +40,12 @@ export default {
 </script>
 <template>
 	<div class="interface">
-		<h2>{{ $store.state.house }}</h2>
+		<h1>{{ $store.state.house }}</h1>
 		<div class="commanders">
-			<h3>Comanders</h3>
+			<h2>Comanders</h2>
 			<ul class="commanders_list">
 				<li v-for="commander in $store.state.houseCommanders">
-					<img class="zoomPlayerInt" :src="commander.commander" alt="">
+					<img class="zoomPlayerInt" :src="commander.commander" alt="" />
 					<img
 						v-if="!commander.used"
 						:src="commander.commander"
@@ -65,7 +64,7 @@ export default {
 			</ul>
 		</div>
 		<div class="units">
-			<h3>Units</h3>
+			<h2>Units</h2>
 			<ul class="units_list">
 				<li @click="chooseUnit('footman')">
 					<img src="../assets/SVGunits/Vector 99.svg" alt="" />
@@ -82,7 +81,7 @@ export default {
 			</ul>
 		</div>
 		<div class="powerTokens">
-			<h3>Power Tokens:</h3>
+			<h2>Power Tokens:</h2>
 			<button
 				@click="$store.commit('decrementPowerTokens')"
 				class="powerTokens_btn">
@@ -100,12 +99,16 @@ export default {
 
 <style>
 .interface {
-	border: 2px solid black;
+	text-align: center;
+	border: 2px solid white;
 	width: 300px;
 	padding: 10px;
 	border-radius: 10px;
 	margin-left: 10px;
 	margin-top: 50px;
+}
+.interface h1 {
+	color: white;
 }
 .interface li {
 	cursor: pointer;
@@ -117,17 +120,23 @@ export default {
 .commanders_list img {
 	width: 35px;
 	height: 50px;
+	margin: 5px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	
 }
 .commanders_list img:hover {
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+	
 }
 
 .powerTokens_btn {
 	background: none;
-	border: 1px solid black;
+	border: 1px solid white;
+	color: white;
 	border-radius: 5px;
 	cursor: pointer;
-	height: 20px;
+	height: 30px;
+	width: 30px;
 	margin: 10px;
 }
 .units_list {
@@ -138,7 +147,7 @@ export default {
 	width: 40px;
 	height: 40px;
 	margin-inline: 10px;
-	fill: url('src/assets/unitsColor/ARRYN.png');
+	
 }
 .zoomPlayerInt {
 	display: none;

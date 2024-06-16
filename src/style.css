@@ -4,6 +4,9 @@
 }
 body {
 	margin: 0;
+	font-style: italic;
+	background-color: #2e2e2e; 
+	color: white;
 }
 
 li {

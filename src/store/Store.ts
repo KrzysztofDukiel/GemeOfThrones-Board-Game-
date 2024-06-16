@@ -3,6 +3,7 @@ import { CommanderDefinitions } from '../configuration/CommanderDefinitions'
 import { OrderDefinitons } from '../configuration/OrderDefinitions'
 import { UnitDefinitions } from '../configuration/UnitDefinitions'
 import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
+import { WesterosCardsDefinitions } from '../configuration/WesterosCardsDefinitions'
 
  const store = createStore({
     state () {
@@ -18,11 +19,9 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
        tracks: [],
        powerTokens: PowerTokensDefinitions,
        housePowerTokens: 0,
-       attackerCard: "",
-       defenderCard: "",
        attacerStrength: 0,
-       defenderStrength: 0
-        
+       defenderStrength: 0,
+       westerosCards: WesterosCardsDefinitions
       }
     },
     mutations: {

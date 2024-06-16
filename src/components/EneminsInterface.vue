@@ -18,7 +18,7 @@ export default {
 			// console.log(commander)
 			const zoomDiv = document.querySelector(".zoom")
 			// zoomDiv.style.backgroundImage = url("src/assets/Commanders/BARATHEON/BARATHEON.png")
-			zoomDiv.style.display = "block"
+			// zoomDiv.style.display = "block"
 		}
 		const zoomOut = () => {
 			const zoomDiv = document.querySelector(".zoom")
@@ -55,12 +55,13 @@ export default {
 
 <style>
 .enemis {
-	border: 2px solid black;
+	border: 2px solid white;
 	padding: 5px;
 	width: 310px;
 	margin-left: 10px;
 	margin-top: 10px;
 	border-radius: 10px;
+	text-align: center;
 }
 
 .enemis_commanders {
@@ -70,10 +71,13 @@ export default {
 }
 .enemis_commanders img:hover {
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+	transform: scale(3); 
 }
 .enemis_commanders img {
 	width: 35px;
 	height: 50px;
+	margin: 5px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .zoom {
 	display: none;

@@ -5,6 +5,7 @@ import HouseChoose from "../components/HouseChoose.vue";
 import PlayerInterface from "../components/PlayerInterface.vue";
 import EneminsInterface from "../components/EneminsInterface.vue";
 import Orders from "../components/Orders.vue"
+import WesterosCards from '../components/westerosCards.vue';
 import ClashOfKingsTrack from "../components/ClashOfKingsTrack.vue"
 import { PlayManager } from "@/mods/PlayManager";
 import { reactive } from "vue";
@@ -17,7 +18,8 @@ export default {
 		PlayerInterface,
 		EneminsInterface,
 		Orders,
-		ClashOfKingsTrack
+		ClashOfKingsTrack,
+		WesterosCards
 
 	},
 	setup() {
@@ -34,6 +36,7 @@ export default {
 	<HouseChoose/>
 	<PlayerInterface/>
 	<EneminsInterface/>
+	<WesterosCards/>
 	<Orders/>
 	<ClashOfKingsTrack/>
 	<Map></Map>
