@@ -17,12 +17,16 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
        houseCommanders: [],
        tracks: [],
        powerTokens: PowerTokensDefinitions,
-       housePowerTokens: 0
-
+       housePowerTokens: 0,
+       attackerCard: "",
+       defenderCard: "",
+       attacerStrength: 0,
+       defenderStrength: 0
+        
       }
     },
     mutations: {
-      chooseHouse(state, payload) {
+      chooseHouse(state, payload: string): void {
         
         if(state.house !== payload) {
           state.house = payload
@@ -45,18 +49,18 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
           
         }
       },
-      addUnit(state, payload) {
-        state.houseUnits.push( payload)
+      addUnit(state, units):void {
+        state.houseUnits.push( units)
       },
-      addOrder(state, payload) {
-        state.houseOrders.push( payload)
+      addOrder(state, order):void {
+        state.houseOrders.push( order)
       },
-      commandersStatus(state, payload) {
+      commandersStatus(state, payload): void {
         state.houseCommanders.array.forEach(element => {
           if(element.commander == payload) return element.used = true
         });
       },
-      incrementPowerTokens(state) {
+      incrementPowerTokens(state):void {
         state.housePowerTokens++
         for(let housePT of state.powerTokens) {
           if(housePT.houseName == state.house) {
@@ -65,7 +69,7 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
           }
         }
       },
-      decrementPowerTokens(state) {
+      decrementPowerTokens(state):void {
         state.housePowerTokens--
         for(let housePT of state.powerTokens) {
           if(housePT.houseName == state.house) {
@@ -74,7 +78,7 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
           }
         }
       },
-      ordersBoxPosition(state, postion) {
+      ordersBoxPosition(state, postion):void {
         state.ordersBox = postion
         
       }
@@ -84,7 +88,7 @@ import { PowerTokensDefinitions } from '../configuration/PowerTokensDefinitions'
       
     },
     actions: {
-      updateHouse({ commit }, house) {
+      updateHouse({ commit }, house):void{
         commit('setHouse', house); 
       }
     }
