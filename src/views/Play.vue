@@ -33,13 +33,13 @@ export default {
 
 <template>
 	
+	<Map></Map>
 	<HouseChoose/>
 	<PlayerInterface/>
 	<EneminsInterface/>
 	<WesterosCards/>
 	<Orders/>
 	<ClashOfKingsTrack/>
-	<Map></Map>
 </template>
 
 <style scoped></style>
