@@ -13,14 +13,12 @@ import { WesterosCardsDefinitions } from '../configuration/WesterosCardsDefiniti
        houseUnits: [],
        orders: OrderDefinitons,
        ordersBox: [],
+       chosenElement: "",
        houseOrders: [],
        allComanders: CommanderDefinitions,
        houseCommanders: [],
-       tracks: [],
        powerTokens: PowerTokensDefinitions,
        housePowerTokens: 0,
-       attacerStrength: 0,
-       defenderStrength: 0,
        westerosCards: WesterosCardsDefinitions
       }
     },

@@ -7,7 +7,8 @@ export default {
 		const store = useStore();
 		const chooseUnit = (unit) => {
 			const chosenUnit = unit;
-			console.log(chosenUnit);
+			store.state.chosenElement = chosenUnit
+			console.log(store.state.chosenElement);
 			return chosenUnit;
 		};
 		const chooseGeneral = (val) => {
@@ -21,12 +22,10 @@ export default {
 		};
 		const zoomIn = () => {
 			const zoomDiv = document.querySelector('.zoomPlayerInt');
-			// zoomDiv.style.backgroundImage = url("src/assets/Commanders/BARATHEON/BARATHEON.png")
-			// zoomDiv.style.display = 'block';
+		
 		};
 		const zoomOut = () => {
 			const zoomDiv = document.querySelector('.zoomPlayerInt');
-			// zoomDiv.style.display = 'none';
 		};
 		return {
 			chooseUnit,
@@ -49,15 +48,13 @@ export default {
 					<img
 						v-if="!commander.used"
 						:src="commander.commander"
-						@mouseover="zoomIn()"
-						@mouseout="zoomOut()"
+						
 						@click="chooseGeneral(commander.commander)"
 						alt="" />
 					<img
 						v-if="commander.used"
 						@click="chooseGeneral(commander.commander)"
-						@mouseover="zoomIn(commander.commander)"
-						@mouseout="zoomOut()"
+						
 						:src="commander.background"
 						alt="" />
 				</li>

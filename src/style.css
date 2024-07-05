@@ -196,7 +196,7 @@ li {
 
 .kingsRoad {
 	left: 900px;
-	top: 1220px;
+	top: 1200px;
 }
 
 .riverLands {
@@ -375,4 +375,33 @@ li {
 .braavos {
 	left: 1580px;
 	top: 1070px;
+}
+
+.footman {
+
+background-image: url("./assets/SVGunits/Vector 99.svg");
+}
+.tower {
+
+	background-image: url("./assets/SVGunits/Vector 101.svg");
+}
+.knight {
+
+	background-image: url("./assets/SVGunits/Vector 100.svg");
+}
+.ship {
+
+	background-image: url("./assets/SVGunits/Vector 102.svg");
+}
+
+.footman, .ship, .knight, .tower  {
+	width: 30px;
+	height: 30px;
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.footman:hover, .ship:hover, .knight:hover, .tower:hover  { 
+	cursor: pointer;
 }

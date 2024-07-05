@@ -1,7 +1,6 @@
 <template>
-	<div class="svgMap">
+	<div class="svgMap" @click="getOrdersBoxPosition()">
 		<svg
-			@click="getOrdersBoxPosition()"
 			class="svg1"
 			width="3218"
 			height="4097"
@@ -476,18 +475,30 @@ export default {
 	setup() {
 		const store = useStore();
 		const getOrdersBoxPosition = () => {
-			const unit = document.createElement('div');
-			unit.textContent = "footman";
+			const clickArea = document.querySelector('.svgMap');
+			const rect = clickArea.getBoundingClientRect();
+            const clickX = event.clientX ;
+            const clickY = event.clientY ;
+			console.log(clickX, clickY)
+           
+			const attributeName = event.target
+				.getAttribute('data-region-name')
+				.toString();
+			const regionDiv = document.getElementsByClassName(attributeName);
 
-			const attributeName = event.target.getAttribute('data-region-name').toString();
+			const element = document.createElement('div');
+			if (store.state.chosenElement !== '') {
+				const unitsBox = regionDiv[0].querySelector('.unitsBox');
+				element.innerHTML = `<div class="${store.state.chosenElement}" @click="moveUnit()" ><div/>`;
+				console.log(unitsBox);
 
-			console.log(attributeName)
-				const regionDiv = document.getElementsByClassName(attributeName);
-	
-			const unitsBox = regionDiv[0].querySelector('.unitsBox');
-			console.log(unitsBox);
-			unitsBox.appendChild(unit)
+				unitsBox.appendChild(element);
+			} else {
+				store.state.ordersBox = [clickX, clickY]
+			}
+			store.state.chosenElement = '';
 		};
+
 		return {
 			store,
 			getOrdersBoxPosition,

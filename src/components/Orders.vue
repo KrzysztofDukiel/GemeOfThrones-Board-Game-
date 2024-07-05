@@ -15,6 +15,7 @@ export default {
 			() => store.state.ordersBox,
 			(newVal) => {
 				const orderBox = document.querySelector('.orders');
+                
 				if (orderBox && newVal.length === 2) {
 					orderBox.style.display = 'block';
 					orderBox.style.left = newVal[0] + 'px';
@@ -68,6 +69,7 @@ export default {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     padding: 10px;
     padding-top: 40px; 
+    z-index: 10;
 }
 
 .orders .close-button {
