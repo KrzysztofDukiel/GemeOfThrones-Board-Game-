@@ -1,197 +1,407 @@
-.at-1 {
-	background-image: url('./assets//orders/at-1.webp');
-}
-.at0 {
-	background-image: url('./assets//orders/at0.webp');
-}
-.at1 {
-	background-image: url('./assets//orders/at1.webp');
-}
-.def1 {
-	background-image: url('./assets//orders/def1.webp');
-}
-.def2 {
-	background-image: url('./assets//orders/def2.jpg');
-}
-.pow {
-	background-image: url('./assets//orders/pow.webp');
-}
-.powSt {
-	background-image: url('./assets//orders/powSt.webp');
-}
-.raid {
-	background-image: url('./assets//orders/raid.webp');
-}
-.raidSt {
-	background-image: url('./assets//orders/raidSt.webp');
-}
-.sup {
-	background-image: url('./assets//orders/sup.webp');
-}
-.sup1 {
-	background-image: url('./assets//orders/sup1.webp');
-}
-.atSea {
-	background-image: url('./assets//orders/atSea.webp');
-}
-.Baratheon {
-	border: 2px solid yellow;
-}
-.Lannister {
-	border: 2px solid red;
-}
-.Tully {
-	border: 2px solid rgb(27, 25, 170);
-}
-.Arryn {
-	border: 2px solid lightblue;
-}
-.Targ {
-	border: 2px solid violet;
-}
-.Stark {
-	border: 2px solid white;
-}
-.Tyller {
-	border: 2px solid rgb(40, 196, 40);
-}
-.Martell {
-	border: 2px solid orange;
-}
-.Grejoy {
-	border: 2px solid black;
-}
-
-.Arrynk {
-	background-image: url(./assets//units/Ak.png);
-}
-.Arrynp {
-	background-image: url(./assets//units/Ap.png);
-}
-.Arryns {
-	background-image: url(./assets//units/As.png);
-}
-.Arrynw {
-	background-image: url(./assets//units/AW.png);
-}
-
-.Baratheonk {
-	background-image: url(./assets//units/Bk.png);
-}
-.Baratheonp {
-	background-image: url(./assets//units/Bp.png);
-}
-.Baratheons {
-	background-image: url(./assets//units/Bs.png);
-}
-.Baratheonw {
-	background-image: url(./assets//units/Bw.png);
-}
-.Grejoyk {
-	background-image: url(./assets//units/Gk.png);
-}
-.Grejoyp {
-	background-image: url(./assets//units/Gp.png);
-}
-.Grejoys {
-	background-image: url(./assets//units/Gs.png);
-}
-.Grejoyw {
-	background-image: url(./assets//units/Gw.png);
-}
-.Lannisterk {
-	background-image: url(./assets//units/Lk.png);
-}
-.Lannisterp {
-	background-image: url(./assets//units/Lp.png);
-}
-.Lannisters {
-	background-image: url(./assets//units/Ls.png);
-}
-.Lannisterw {
-	background-image: url(./assets//units/Lw.png);
-}
-.Martellk {
-	background-image: url(./assets//units/Mk.png);
-}
-.Martellp {
-	background-image: url(./assets//units/Mp.png);
-}
-.Martells {
-	background-image: url(./assets//units/Ms.png);
-}
-.Martellw {
-	background-image: url(./assets//units/Mw.png);
-}
-.Starkk {
-	background-image: url(./assets//units/Sk.png);
-}
-.Starkp {
-	background-image: url(./assets//units/Sp.png);
-}
-.Starks {
-	background-image: url(./assets//units/Ss.png);
-}
-.Starkw {
-	background-image: url(./assets//units/Sw.png);
-}
-.Tyllerk {
-	background-image: url(./assets//units/Tk.png);
-}
-.Tyllerp {
-	background-image: url(./assets//units/Tp.png);
-}
-.Tyllers {
-	background-image: url(./assets//units/Ts.png);
-}
-.Tyllerw {
-	background-image: url(./assets//units/Tw.png);
-}
-
-.BaratheonR {
-	background-image: url('./assets/orders/revers/Break.png');
-}
-.LannisterR {
-	background-image: url('./assets/orders/revers/Lan.png');
-}
-.TullyR {
-	background-image: url('./assets/orders/revers/Tlly.png');
-}
-.ArrynR {
-	background-image: url('./assets/orders/revers/arrange.png');
-}
-.TargR {
-	background-image: url('./assets/orders/revers/Break.png');
-}
-.StarkR {
-	background-image: url('./assets/orders/revers/Start.png');
-}
-.TyllerR {
-	background-image: url('./assets/orders/revers/turlaj.png');
-}
-.MartellR {
-	background-image: url('./assets/orders/revers/diuna.png');
-}
-.GrejoyR {
-	background-image: url('./assets/orders/revers/Greek.png');
-}
 
 .container {
 	margin-inline: 200px;
 }
 body {
 	margin: 0;
+	font-style: italic;
+	background-color: #2e2e2e; 
+	color: white;
 }
 
-/* .mapClass {
-	opacity: 0.8;
-} */
-
-/* .svg{
-	fill: none;
-} */
-
+li {
+	list-style: none;
+}
 .svg1 {
 	border: 30px solid black;	
 	fill: none;
+}
+
+
+.bayofIce {
+	left: 680px;
+	top: 470px;
+}
+.blazewaterBay {
+	left: 430px;
+	top: 500px;
+}
+.sunsetSea {
+	left: 366px;
+	top: 940px;
+}
+.ironnBay {
+	left: 426px;
+	top: 1210px;
+}
+
+.goldenSound {
+	left: 426px;
+	top: 1350px;
+}
+
+.westsummerSea {
+	left: 396px;
+	top: 1570px;
+}
+
+.redwyneSea {
+	left: 426px;
+	top: 1840px;
+}
+
+.eastSummerSea {
+	left: 1126px;
+	top: 1980px;
+}
+
+.seaDorne{
+	left: 1026px;
+	top: 1780px;
+}
+.shipbrakerBay {
+	left: 1200px;
+	top: 1480px;
+}
+.gullet {
+	left: 1140px;
+	top: 1410px;
+}
+
+.blackwaterBay {
+	left: 1040px;
+	top: 1370px;
+}
+.seaMyrth {
+	left: 1340px;
+	top: 1440px;
+}
+.orangeBay {
+	left: 1490px;
+	top: 1940px;
+}
+.narrowSea {
+	left: 1300px;
+	top: 1070px;
+}
+
+.shveringSea {
+	left: 1250px;
+	top: 670px;
+}
+.bayCraps {
+	left: 1180px;
+	top: 1090px;
+}
+.byte {
+	left: 1000px;
+	top: 900px;
+}
+
+
+.bearIsland {
+	left: 560px;
+	top: 420px;
+}
+
+.castleBlack {
+	left: 890px;
+	top: 400px;
+}
+
+.deepWood {
+	left: 670px;
+	top: 570px;
+}
+
+.stonyShore {
+	left: 610px;
+	top: 750px;
+}
+
+.dreadFort {
+	left: 1000px;
+	top: 520px;
+}
+
+.whiteHarbor {
+	left: 880px;
+	top: 750px;
+}
+.winterfell {
+	left: 760px;
+	top: 770px;
+}
+
+
+
+.widowsWatch {
+	left: 980px;
+	top: 740px;
+}
+
+.moatCailin {
+	left: 750px;
+	top: 900px;
+}
+
+.greyWaterWatch {
+	left: 650px;
+	top: 930px;
+}
+.flintsFinger {
+	left: 540px;
+	top: 930px;
+}
+
+.twins {
+	left: 780px;
+	top: 1050px;
+}
+
+.seagard {
+	left: 680px;
+	top: 1050px;
+}
+
+.pyke {
+	left: 500px;
+	top: 1130px;
+}
+
+.fingers {
+	left: 970px;
+	top: 1000px;
+}
+
+.eyrie {
+	left: 930px;
+	top: 1100px;
+}
+
+.vale {
+	left: 1060px;
+	top: 1100px;
+}
+
+.gate {
+	left: 970px;
+	top: 1170px;
+}
+
+.gulltown {
+	left: 1050px;
+	top: 1200px;
+}
+
+.kingsRoad {
+	left: 900px;
+	top: 1200px;
+}
+
+.riverLands {
+	left: 710px;
+	top: 1200px;
+}
+.benfort {
+	left: 600px;
+	top: 1250px;
+}
+
+.riverrun {
+	left: 710px;
+	top: 1270px;
+}
+
+.lannisport {
+	left: 560px;
+	top: 1350px;
+}
+
+.goldentooth {
+	left: 680px;
+	top: 1350px;
+}
+
+.harrenhal {
+	left: 830px;
+	top: 1290px;
+}
+
+.craklepoint {
+	left: 930px;
+	top: 1320px;
+}
+
+.blackwaterRush {
+	left: 770px;
+	top: 1370px;
+}
+
+.castlryRock {
+	left: 680px;
+	top: 1430px;
+}
+
+.reach {
+	left: 800px;
+	top: 1480px;
+}
+
+.marchs {
+	left: 520px;
+	top: 1500px;
+}
+
+.kingsLanding {
+	left: 930px;
+	top: 1450px;
+}
+
+.goldengrove {
+	left: 680px;
+	top: 1530px;
+}
+
+.highgarden {
+	left: 600px;
+	top: 1600px;
+}
+
+.dornishMarches {
+	left: 700px;
+	top: 1650px;
+}
+
+.oldTown {
+	left: 540px;
+	top: 1750px;
+}
+
+.treeTowers{
+	left: 600px;
+	top: 1830px;
+}
+
+.princePass {
+	left: 720px;
+	top: 1770px;
+}
+
+.boneway {
+	left: 830px;
+	top: 1730px;
+}
+
+
+.rainwood {
+	left: 990px;
+	top: 1670px;
+}
+
+.strafall {
+	left: 720px;
+	top: 1900px;
+}
+
+.yronwood {
+	left: 840px;
+	top: 1840px;
+}
+
+.sunspear {
+	left: 1100px;
+	top: 1860px;
+}
+
+.saltShore {
+	left: 950px;
+	top: 1900px;
+}
+
+.arbor {
+	left: 420px;
+	top: 1950px;
+}
+
+.stormsEnd {
+	left: 980px;
+	top: 1560px;
+}
+
+.bitterBrgide {
+	left: 820px;
+	top: 1600px;
+}
+
+.tarth {
+	left: 1200px;
+	top: 1580px;
+}
+
+.lys {
+	left: 1370px;
+	top: 1950px;
+}
+.volantis {
+	left: 1670px;
+	top: 1850px;
+}
+
+.dothrakiSea {
+	left: 1690px;
+	top: 1650px;
+}
+.disputedLands {
+	left: 1490px;
+	top: 1820px;
+}
+
+.myr {
+	left: 1490px;
+	top: 1620px;
+}
+
+.pentos {
+	left: 1520px;
+	top: 1420px;
+}
+
+.andalos {
+	left: 1520px;
+	top: 1280px;
+}
+
+.braavos {
+	left: 1580px;
+	top: 1070px;
+}
+
+.footman {
+
+background-image: url("./assets/SVGunits/Vector 99.svg");
+}
+.tower {
+
+	background-image: url("./assets/SVGunits/Vector 101.svg");
+}
+.knight {
+
+	background-image: url("./assets/SVGunits/Vector 100.svg");
+}
+.ship {
+
+	background-image: url("./assets/SVGunits/Vector 102.svg");
+}
+
+.footman, .ship, .knight, .tower  {
+	width: 30px;
+	height: 30px;
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.footman:hover, .ship:hover, .knight:hover, .tower:hover  { 
+	cursor: pointer;
 }

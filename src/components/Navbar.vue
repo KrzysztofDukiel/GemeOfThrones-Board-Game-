@@ -58,10 +58,10 @@
 	padding: 5px;
 	font-size: 20px;
 	transition: 0.3s;
+	cursor: pointer;
 }
 
 .menu_bar_list li:hover {
-	cursor: pointer;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 .menu_bar_title {
